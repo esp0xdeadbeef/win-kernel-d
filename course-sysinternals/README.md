@@ -18,7 +18,7 @@ To do:
 
     <details><summary>Current status (20 parts with checkboxes)</summary>
 
-    * [ ] part 01
+    * [x] part 01
       - Skipped because legacy code. Check the notes in Part-01
     * [ ] part 02
     * [ ] part 03
