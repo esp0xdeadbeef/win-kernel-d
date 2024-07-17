@@ -18,15 +18,16 @@ To do:
 
     <details><summary>Current status (20 parts with checkboxes)</summary>
 
-    * [ ] part 1
-    * [ ] part 2
-    * [ ] part 3
-    * [ ] part 4
-    * [ ] part 5
-    * [ ] part 6
-    * [ ] part 7
-    * [ ] part 8
-    * [ ] part 9
+    * [ ] part 01
+      - Skipped because legacy code. Check the notes in Part-01
+    * [ ] part 02
+    * [ ] part 03
+    * [ ] part 04
+    * [ ] part 05
+    * [ ] part 06
+    * [ ] part 07
+    * [ ] part 08
+    * [ ] part 09
     * [ ] part 10
     * [ ] part 11
     * [ ] part 12

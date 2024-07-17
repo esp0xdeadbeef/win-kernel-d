@@ -1,4 +1,7 @@
 
+# future
+I need to understand how the process is started in windows 11.
+
 
 # break on MmcreateProcessAddressSpace
 bp nt!MmcreateProcessAddressSpace
