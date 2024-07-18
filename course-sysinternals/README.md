@@ -17,10 +17,12 @@ To do:
   * [x] [Source](https://www.youtube.com/watch?v=4AkzIbmI3q4&list=PLhx7-txsG6t5i-kIZ_hwJSgZrnka4GXvn&index=1)
 
     <details><summary>Current status (20 parts with checkboxes)</summary>
+    I'm using OCR / Transcripts (e.g. `tesseract ./<image-name>.png summary` or `https://kome.ai/tools/youtube-transcript-generator`) as notes, some parts are with debugging notes.
 
-    * [x] part 01
-      - Skipped because legacy code. Check the notes in Part-01
-    * [ ] part 02
+    * [?] part 01
+      - Skipped because legacy code. 
+        Check the notes in `Part-01/kernel-debugging-notes.md`
+    * [x] part 02
     * [ ] part 03
     * [ ] part 04
     * [ ] part 05
