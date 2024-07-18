@@ -1,0 +1,132 @@
+
+.echo "Loaded from:"
+.echo "$$>a<${$arg0}"
+
+.echo "some reminders:"
+
+.echo "1. Fancy Debug Menu:"
+.echo "    .cmdtree z:\github_clones\windbgtree\Windbgtree.txt"
+
+.echo "2. Script Loading (Python and WDS):"
+.echo "    $$>a<z:\scripts\file_write_with_break.wds; g"
+.echo "    .load narly; !nmod; $$>a<z:\scripts\gadgets_search\pop_pop_ret.wds start(1000...) end (1001...)"
+.echo "    .load narly; !nmod; $$>a<z:\scripts\gadgets_search\pop_ret.wds start(1000...) end (1001...)"
+.echo "    .load pykd; !py z:\scripts\python\find_mem_relative_to_reg.py ebp naaf"
+.echo "    .load pykd; !py z:\scripts\python\hello_world_pykd.py"
+
+.echo "3. Execution Control:"
+.echo "    `g`  | Continue execution until the next breakpoint or event."
+.echo "    `s`  | Step into the next instruction."
+.echo "    `t`  | Step over the next instruction."
+.echo "    `p`  | Step over the call instruction."
+.echo "    `gu` | Step out of the current function."
+
+.echo "4. Breakpoint Management:"
+.echo "    General:"
+.echo "        `bl` | List all breakpoints."
+.echo "        `be` | Enable a breakpoint."
+.echo "        `bd` | Disable a breakpoint."
+.echo "        `bc` | Clear a breakpoint."
+.echo "    Hard Breakpoints:"
+.echo "        `ba` | Set an access breakpoint."
+.echo "        `bu` | Set a read/write breakpoint."
+.echo "        `bd` | Disable a hardware breakpoint."
+.echo "    Soft Breakpoints:"
+.echo "        `bp` | Set a software breakpoint."
+
+.echo "5. Data Inspection:"
+.echo "    `r`  | Display or edit the current values of the processor registers."
+.echo "    `dv` | Display the local variables for the current function."
+.echo "    `da` | Display the ASCII representation of a block of memory."
+.echo "    `du` | Display the Unicode representation of a block of memory."
+.echo "    `?? sizeof(MyModule!MyStruct)` | Display the size of a struct from symbols."
+
+.echo "6. Data manipulation:"
+.echo "    `ed` | Edit double for a specific register e.g. `ed eax+4 1000`"
+
+.echo "7. Miscellaneous Commands:"
+.echo "    `.cls` | Clear the command prompt output."
+.echo "    `.hh`  | Access the online help."
+.echo "    `$$`   | Comment indicator."
+
+.echo "8. Stack & Call Stack:"
+.echo "    `k`  | Display the current call stack."
+.echo "    `kn` | Display the current call stack with frame numbers."
+.echo "    `kp` | Display the current call stack with parameters."
+.echo "    `kv` | Display the current call stack with local variables."
+
+.echo "9. Memory Allocation:"
+.echo "    `!heap -p -a <address>` | Get detailed information about a heap block."
+.echo "    `!address <address>`    | Display detailed information about a virtual address."
+
+.echo "10. Modules & Symbols:"
+.echo "    `lm`     | List loaded modules."
+.echo "    `x *!*`  | List all symbols."
+.echo "    `ld <module>` | Load symbols for a module."
+.echo "    `!sym noisy`  | Enable verbose symbol loading."
+
+.echo "11. Thread Management:"
+.echo "    `~`        | Display the list of all threads."
+.echo "    `~*kb`     | Display the call stack for all threads."
+.echo "    `~~[Thread]s` | Set the context to a specific thread."
+
+.echo "12. Miscellaneous Commands:"
+.echo "    `.time`     | Display the current system time and the time since the debugger started."
+.echo "    `.reload`   | Reload symbol information."
+.echo "    `.logopen <filepath>` | Start logging the debugger session to a file."
+.echo "    `.logclose` | Close the logging file."
+.echo "    `!analyze -v` | Perform verbose analysis of a crash dump."
+
+.echo "13. Searching Memory:"
+.echo "    `s -[type] <range> <pattern>` | Search memory. For instance, `s -d esp L1000 12345678` to search DWORDs from ESP to ESP+1000 for 12345678."
+
+.echo "14. Data manipulation (continued):"
+.printf "    `ea` | Edit ASCII for a specific memory address e.g. `ea esp \"Hello\"` \n"
+.printf "    `eu` | Edit Unicode for a specific memory address e.g. `eu esp L\"Hello\"`\n"
+
+.echo "15. Environment Management:"
+.echo "    `.cls` | Clear the screen."
+.echo "    `.childdbg 1` | Debug child processes."
+
+.echo "16. ROP Chaining"
+.echo "    `lm m <module_name>` # check if there is a illegal char in there."
+.printf "`C:\\Tools\\dep\\rp-win-x86.exe -f \"module.dll\" -r 5 > C:\\test.txt; copy C:\\test.txt \"z:\\exam\\box..\\rp-win-x86.out\"`\n"
+
+.echo "17. Exception Management:"
+.echo "    `!analyze`  | Automatically analyze the exception or crash."
+.echo "    `exr -1`    | Display the most recent exception record."
+.echo "    `!exchain`  | Display the current exception chain."
+
+.echo "18. Context and Execution State:"
+.echo "    `.cxr <address>` | Set the context to the specified context record."
+.echo "    `!running -it`  | Display running threads and the current instruction."
+
+.echo "19. Customizing the Environment:"
+.echo "    `.prompt_allow` | Enables command prompts to be changed."
+.echo "    `.prompt (WinDbg)` | Sets the prompt to display 'WinDbg'."
+
+.echo "20. Working with Extensions:"
+.echo "    `.chain`   | Display the list of loaded debugger extensions."
+.echo "    `.loadby <ext> <module>` | Load an extension by module (e.g. .loadby sos clr for .NET debugging)."
+.echo "    `!<ext>.help` | Display help for a particular extension."
+
+.echo "21. System Information:"
+.echo "    `!sysinfo` | Provides system specific information like BIOS date, Boot type etc."
+
+.echo "22. I/O Management:"
+.echo "    `.ioport`   | Read or write from an I/O port."
+.echo "    `.readmem <file> <address> <size>` | Read memory to a file."
+
+.echo "23. Scripting and Automating Tasks:"
+.echo "    `$$>< <scriptfile>` | Execute a script file."
+.echo "    `.for (r $t0=0; @$t0 < 10; r $t0=@$t0+1) { commands }` | For loop to repeat commands."
+.echo "    `(echo; cat /tmp/test; echo ) | sed 's/.* ptr //g' | sed 's/h//g' | sed ':a;N;$!ba;s/\n/\ndb ebp /g' | sed ':a;N;$!ba;s/\n/ L10 \n/g' | sed ':a;N;$!ba;s/\n/;/g'`"
+.echo "24. Data types:"
+.echo "    0x: Hexadecimal"
+.echo "    0y: Binary"
+.echo "    0n: Decimal"
+.echo "    0t: Octal"
+.echo "    0q: Quadword (64-bit)"
+.echo "    0d: Dword (32-bit)"
+.echo "    0w: Word (16-bit)"
+.echo "    0b: Byte (8-bit)"
