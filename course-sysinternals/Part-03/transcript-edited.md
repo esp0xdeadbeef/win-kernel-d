@@ -6,7 +6,8 @@ We're going to discuss the functions of the Application Program Interface (API) 
 
 - `CreateProcess` — This is the most frequently used API.
 - `CreateProcessAsUser` — We probably won't be discussing this in this presentation.
-- `CWCreateUserProcess` — An undocumented function, but that is how you create a user mode process from the console. There are a couple of other undocumented APIs to create a process.
+- `ZwCreateUserProcess` — An undocumented function, but that is how you create a user mode process from the console. There are a couple of other undocumented APIs to create a process.
+- ... and more
 
 ## Parameters
 
