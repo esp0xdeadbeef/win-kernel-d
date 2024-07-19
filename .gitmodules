@@ -1,0 +1,3 @@
+[submodule "external-resources/createuserprocess"]
+	path = external-resources/createuserprocess
+	url = https://github.com/Microwave89/createuserprocess
