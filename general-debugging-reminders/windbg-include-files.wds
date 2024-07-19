@@ -121,6 +121,9 @@
 .echo "    `$$>< <scriptfile>` | Execute a script file."
 .echo "    `.for (r $t0=0; @$t0 < 10; r $t0=@$t0+1) { commands }` | For loop to repeat commands."
 .echo "    `(echo; cat /tmp/test; echo ) | sed 's/.* ptr //g' | sed 's/h//g' | sed ':a;N;$!ba;s/\n/\ndb ebp /g' | sed ':a;N;$!ba;s/\n/ L10 \n/g' | sed ':a;N;$!ba;s/\n/;/g'`"
+
+
+
 .echo "24. Data types:"
 .echo "    0x: Hexadecimal"
 .echo "    0y: Binary"
@@ -130,3 +133,10 @@
 .echo "    0d: Dword (32-bit)"
 .echo "    0w: Word (16-bit)"
 .echo "    0b: Byte (8-bit)"
+
+.echo "Kernel Debugging:"
+.echo "    dq PsActiveProcessHead L1"
+.echo "        example result:"
+.echo "        fffff802`73e37e60  ffffe386`318ff488"
+.echo "    dt nt!_EPROCESS ffffe386`318ff488 "
+.echo "    !process 0 0 `<process>` | where process can be e.g. `windbg.exe` getting the teb from a specific process"
