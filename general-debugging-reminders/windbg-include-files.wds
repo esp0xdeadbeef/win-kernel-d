@@ -140,3 +140,5 @@
 .echo "        fffff802`73e37e60  ffffe386`318ff488"
 .echo "    dt nt!_EPROCESS ffffe386`318ff488 "
 .echo "    !process 0 0 `<process>` | where process can be e.g. `windbg.exe` getting the teb from a specific process"
+.echo "Dump all the processes within the _EPROCESS structure:"
+.echo "    dt nt!_EPROCESS -l ActiveProcessLinks.Flink ImageFileName (ffffe386`318ff488 - 0x448)"

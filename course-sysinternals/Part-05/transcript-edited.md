@@ -20,7 +20,7 @@ We will look at some of the kernel data structures like `_KPROCESS`, `_EPROCESS`
 
 `_KPROCESS` is a field inside a process and is the first element in the process structure. This means that if you have a pointer to `_EPROCESS`, it will also point to `_KPROCESS`. 
 
-Although logically treated as different entities, in the kernel, there is only one structure, `_EPROCESS`, which contains `_KPROCESS`. In user mode, we have the `PEB`.
+Although logically treated as different entities, in the kernel, there is only one structure, `_EPROCESS`, which contains `_KPROCESS`. In user mode, we have the `_PEB`.
 
 ### User Mode and Kernel Mode
 
@@ -49,9 +49,9 @@ We will see a demo using a kernel debugger attached to a virtual machine running
 
 ### Key Structures
 
-- **KPROCESS:** A smaller structure compared to `_EPROCESS`, containing machine-dependent fields like `CR3`.
-- **EPROCESS:** Contains bookkeeping data structures.
-- **PEB:** The user-mode data structure containing information like the heap, loaded DLLs, etc.
+- **`_KPROCESS`:** A smaller structure compared to `_EPROCESS`, containing machine-dependent fields like `CR3`.
+- **`_EPROCESS`:** Contains bookkeeping data structures.
+- **`_PEB`:** The user-mode data structure containing information like the heap, loaded DLLs, etc.
 
 ## Create Process
 
