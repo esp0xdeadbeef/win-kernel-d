@@ -28,9 +28,12 @@ To do:
     * [x] Part 03
       - This presentation delves into process creation in Windows, focusing on the use of the CreateProcess API. It discusses key parameters, particularly the importance of specifying the .exe file name. A demo illustrates starting Notepad from Explorer, using WinDbg to break and inspect the CreateProcess function, and creating a process programmatically. The session emphasizes understanding process creation in user mode, inviting further feedback and interaction through specified channels.
       - source code for `CreateProcess` is in `Part-03/CreateProcess.cpp`
-    * [ ] Part 04
-    * [ ] Part 05
+    * [x] Part 04
+      - This presentation delves into the concept of processes within operating systems, highlighting how processes utilize isolated virtual address spaces to enable multiple programs to operate independently and securely on the same physical hardware. It explains the mechanism of memory management using page table entries to map virtual addresses to different physical locations for each process, ensuring that processes cannot access or interfere with each other’s data.
+    * [x] Part 05
+      - This presentation focuses on the critical metadata structures of a process in Windows, examining kernel and user-mode data structures such as _KPROCESS, _EPROCESS, and _PEB. It explains how these structures interact and are crucial for the kernel's management of processes, detailing their roles in bookkeeping, memory management via page table entries, and the creation of processes through the CreateProcess function.
     * [ ] Part 06
+      - This presentation provides a detailed exploration of various debugger commands used for process analysis, particularly focusing on commands like !process, !thread, and !address. It highlights their applications, such as switching process context and dumping process structures, and introduces advanced usage like !process 0x17 for in-depth insights into process structures and user mode activities on a Windows 8.1 system.
     * [ ] Part 07
     * [ ] Part 08
     * [ ] Part 09

@@ -29,7 +29,7 @@ The entire process virtual address space is divided into two parts: the lower 2G
 - **User Mode:** Contains the `_PEB` structure.
 - **Kernel Mode:** Contains `_EPROCESS` and `_KPROCESS`.
 
-`_KPROCESS` is more machine-dependent, for example, `CR3`, a feature of the x86 architecture. `PEB` is a Windows-specific artifact with a direct pointer from `_EPROCESS` to `PEB`.
+`_KPROCESS` is more machine-dependent, for example, `CR3`, a feature of the x86 architecture. `_PEB` is a Windows-specific artifact with a direct pointer from `_EPROCESS` to `_PEB`.
 
 ### Page Table Entries
 
