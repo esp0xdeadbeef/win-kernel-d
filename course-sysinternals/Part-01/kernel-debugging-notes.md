@@ -6,6 +6,12 @@ I need to understand how the process is started in windows 11.
 # break on MmcreateProcessAddressSpace
 bp nt!MmcreateProcessAddressSpace
 
+```
+bp condrv!CdpFastIoDeviceControl ".echo \"condrv!CdpFastIoDeviceControl \";db esp L10; g"
+
+# bp on a process from processhacker (mimikatz this case, to debug )
+bp /p 0x7ff6feb30000 condrv!CdpFastIoDeviceControl ".echo \"condrv!CdpFastIoDeviceControl \";db esp L10; g"
+```
 
 ## debug output from the video:
 ```windbg
