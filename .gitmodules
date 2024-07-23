@@ -4,3 +4,15 @@
 [submodule "external-resources/windbgtree"]
 	path = external-resources/windbgtree
 	url = https://github.com/vagnerpilar/windbgtree
+[submodule "external-resources/poolinfo"]
+	path = external-resources/poolinfo
+	url = https://github.com/fishstiqz/poolinfo
+[submodule "external-resources/heap-tracing"]
+	path = external-resources/heap-tracing
+	url = https://github.com/sam-b/windbg-plugins/
+[submodule "external-resources/evalyzer"]
+	path = external-resources/evalyzer
+	url = https://github.com/szimeus/evalyzer
+[submodule "external-resources/awesome-windbg-extensions-links"]
+	path = external-resources/awesome-windbg-extensions-links
+	url = https://github.com/anhkgg/awesome-windbg-extensions
