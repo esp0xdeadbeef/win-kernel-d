@@ -30,7 +30,7 @@ Note
 1. Executing a hello world.
 2. Observing the presence of conhost in process explorer.
 3. Who wrote code for black window? System?
-4. conhost created by `helloworld.exe` where is code for that?.
+4. conhost created by `helloworld.exe` where is code for that?
 5. Conhost is started by `helloworld.exe` even before a usermode debugger started.
 6. So we need a much earlier break in the run of creating the process for `helloworld.exe`
 7. bp on nt!MmCreateProcessAddressSpace in kd.
