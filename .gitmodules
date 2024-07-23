@@ -1,3 +1,6 @@
 [submodule "external-resources/createuserprocess"]
 	path = external-resources/createuserprocess
 	url = https://github.com/Microwave89/createuserprocess
+[submodule "external-resources/windbgtree"]
+	path = external-resources/windbgtree
+	url = https://github.com/vagnerpilar/windbgtree
