@@ -6,6 +6,7 @@
 
 .echo "1. Fancy Debug Menu:"
 .echo "    .cmdtree z:\github_clones\windbgtree\Windbgtree.txt"
+.echo "    .cmdtree \\tsclient\_home_deadbeef_github_win-kernel-d\external-resources\windbgtree\Windbgtree.txt"
 
 .echo "2. Script Loading (Python and WDS):"
 .echo "    $$>a<z:\scripts\file_write_with_break.wds; g"
