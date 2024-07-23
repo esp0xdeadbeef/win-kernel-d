@@ -79,3 +79,6 @@ To do:
 * [ ] Making my first driver:
   * [ ] [Source msdocs](https://learn.microsoft.com/en-us/windows-hardware/drivers/gettingstarted/writing-a-very-small-kmdf--driver)
   
+
+* [ ] Understand how the kernel can have shared memory with the user space (these are the sources and sinks)
+  * https://stackoverflow.com/questions/55054190/copying-data-from-user-app-to-kernel-driver-via-memcpy
