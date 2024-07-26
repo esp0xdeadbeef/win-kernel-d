@@ -54,7 +54,8 @@ If your VM has multiple network adapters, configure as follows:
 
 If your VM has a single network adapter, ensure it is set to the `e1000` Intel adapter.
 
-## Setting Up Debugging in KVM (slow)
+
+## Follow the rest of the guide on MS
 
 After configuring your VM and network settings, follow the official Microsoft guide to set up network debugging:
 [Setting Up a Network Debugging Connection Automatically](https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/setting-up-a-network-debugging-connection-automatically)
