@@ -1,0 +1,7 @@
+.echo "Loaded from:"
+.echo "$$>a<${$arg0}"
+
+bp condrv!CdpFastIoDeviceControl "!process -1 0;g"
+
+$$ bp condrv!CdpFastIoDeviceControl "g"
+$$ $$>a<\\\\tsclient\\_home_deadbeef_github_win-kernel-d\\course-sysinternals\\Part-01\\debugging-scripts.wsd
