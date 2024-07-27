@@ -79,13 +79,15 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/socat UNIX-CLIENT:/var/run/qemu-server/<id1>.serial0 UNIX-CLIENT:/var/run/qemu-server/<id1>.serial0
+ExecStart=/usr/bin/socat UNIX-CLIENT:/var/run/qemu-server/<id1>.serial0 UNIX-CLIENT:/var/run/qemu-server/<id2>.serial0
 Restart=always
 RestartSec=2
 
 [Install]
 WantedBy=multi-user.target
 ```
+
+Please change the `<id1>` and `<id2>` accordingly to your setup.
 
 ## Installing socat 
 If you do not have `socat` installed, you can install it using `apt`:
