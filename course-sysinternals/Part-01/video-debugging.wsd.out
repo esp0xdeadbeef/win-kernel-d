@@ -1,0 +1,66 @@
+0: kd> bp condrv!CdpFastIoDeviceControl ".echo \"setting breakpoint chain on condrv!CdpFastIoDeviceControl, do a `bl` to check how i did it\";.echo \"bp 0\";!process -1 0;!thread; bd 0; bp nt!MmCreateProcessAddressSpace \"bd 1;.echo \\\"bp 1\\\";!thread;g\"; g"
+0: kd> g
+setting breakpoint chain on condrv!CdpFastIoDeviceControl, do a `bl` to check how i did it
+bp 0
+PROCESS ffff800c3dab70c0
+    SessionId: 4  Cid: 2f68    Peb: a5051e5000  ParentCid: 05ac
+    DirBase: 4d4609000  ObjectTable: ffffa30ee6620680  HandleCount:  22.
+    Image: ConsoleApplication1.exe
+
+THREAD ffff800c3994d080  Cid 2f68.32c8  Teb: 000000a5051e6000 Win32Thread: 0000000000000000 RUNNING on processor 1
+Not impersonating
+DeviceMap                 ffffa30ee8e04030
+Owning Process            ffff800c3dab70c0       Image:         ConsoleApplication1.exe
+Attached Process          N/A            Image:         N/A
+Wait Start TickCount      314499         Ticks: 0
+Context Switch Count      3              IdealProcessor: 1             
+UserTime                  00:00:00.000
+KernelTime                00:00:00.000
+Win32 Start Address 0x00007ff6638c127b
+Stack Init fffffa0f9ffb8db0 Current fffffa0f9ffb8140
+Base fffffa0f9ffb9000 Limit fffffa0f9ffb3000 Call 0000000000000000
+Priority 9  BasePriority 8  IoPriority 2  PagePriority 5
+Child-SP          RetAddr               : Args to Child                                                           : Call Site
+fffffa0f`9ffb8948 fffff807`6cdc4f7e     : 00000004`00000004 00000000`00000000 00000000`00000000 00000000`00000000 : condrv!CdpFastIoDeviceControl
+fffffa0f`9ffb8950 fffff807`6cdc4b06     : 000001d5`e7229318 00000000`00000006 00000000`00000000 00000000`00000000 : nt!IopXxxControlFile+0x45e
+fffffa0f`9ffb8b40 fffff807`6ca2b505     : 00000000`00000000 00000000`00000000 00000000`00000000 000000a5`052fe188 : nt!NtDeviceIoControlFile+0x56
+fffffa0f`9ffb8bb0 00007fff`60290084     : 00007fff`5d90b5aa 000000a5`00000007 00000000`00000002 000001d5`00000020 : nt!KiSystemServiceCopyEnd+0x25 (TrapFrame @ fffffa0f`9ffb8c20)
+000000a5`052fe5d8 00007fff`5d90b5aa     : 000000a5`00000007 00000000`00000002 000001d5`00000020 00000000`00000000 : 0x00007fff`60290084
+000000a5`052fe5e0 000000a5`00000007     : 00000000`00000002 000001d5`00000020 00000000`00000000 000000a5`052fe648 : 0x00007fff`5d90b5aa
+000000a5`052fe5e8 00000000`00000002     : 000001d5`00000020 00000000`00000000 000000a5`052fe648 00000000`00500037 : 0x000000a5`00000007
+000000a5`052fe5f0 000001d5`00000020     : 00000000`00000000 000000a5`052fe648 00000000`00500037 000001d5`e7228be0 : 0x2
+000000a5`052fe5f8 00000000`00000000     : 000000a5`052fe648 00000000`00500037 000001d5`e7228be0 000001d5`00000738 : 0x000001d5`00000020
+
+bp 1
+THREAD ffff800c3994d080  Cid 2f68.32c8  Teb: 000000a5051e6000 Win32Thread: 0000000000000000 RUNNING on processor 1
+Not impersonating
+DeviceMap                 ffffa30ee8e04030
+Owning Process            ffff800c3dab70c0       Image:         ConsoleApplication1.exe
+Attached Process          N/A            Image:         N/A
+Wait Start TickCount      314499         Ticks: 0
+Context Switch Count      3              IdealProcessor: 1             
+UserTime                  00:00:00.000
+KernelTime                00:00:00.015
+Win32 Start Address 0x00007ff6638c127b
+Stack Init fffffa0f9ffb8db0 Current fffffa0f9ffb8140
+Base fffffa0f9ffb9000 Limit fffffa0f9ffb3000 Call 0000000000000000
+Priority 9  BasePriority 8  IoPriority 2  PagePriority 5
+Child-SP          RetAddr               : Args to Child                                                           : Call Site
+fffffa0f`9ffb7408 fffff807`6cc9d5e7     : 00000000`0052a200 00000000`0052a001 00000000`00000000 00000000`00008601 : nt!MmCreateProcessAddressSpace
+fffffa0f`9ffb7410 fffff807`6cca1148     : 00000000`00000000 fffffa0f`9ffb7cc0 00000000`00000000 00000000`00000000 : nt!PspAllocateProcess+0xb77
+fffffa0f`9ffb7c40 fffff807`6ca2b505     : 00000000`000015d0 fffff807`6c8bfc82 00000000`00000662 fffffa0f`9ffb84d1 : nt!NtCreateUserProcess+0x778
+fffffa0f`9ffb8400 fffff807`6ca1b990     : fffff807`92deab74 00000000`00000000 00000000`00000000 00000000`00000000 : nt!KiSystemServiceCopyEnd+0x25 (TrapFrame @ fffffa0f`9ffb8470)
+fffffa0f`9ffb8608 fffff807`92deab74     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00002f68 : nt!KiServiceLinkage
+fffffa0f`9ffb8610 fffff807`92dea743     : 000001d5`e7228be0 00000000`00000000 000001d5`e7229318 00000000`00000000 : condrv!CdpCreateProcess+0x154
+fffffa0f`9ffb87c0 fffff807`92de8818     : fffffa0f`9ffb8ca0 00000000`00000738 00000000`00000001 000001d5`e7228be0 : condrv!CdpLaunchServerProcess+0x173
+fffffa0f`9ffb88c0 fffff807`92deaf1d     : 000001d5`e7228be0 ffff800c`3aa433c0 00000000`00000000 fffff807`92deaeb0 : condrv!CdpServerFastIoctl+0x168
+fffffa0f`9ffb8900 fffff807`6cdc4f7e     : 00000004`00000004 00000000`00000000 00000000`00000000 00000000`00000000 : condrv!CdpFastIoDeviceControl+0x6d
+fffffa0f`9ffb8950 fffff807`6cdc4b06     : 000001d5`e7229318 00000000`00000006 00000000`00000000 00000000`00000000 : nt!IopXxxControlFile+0x45e
+fffffa0f`9ffb8b40 fffff807`6ca2b505     : 00000000`00000000 00000000`00000000 00000000`00000000 000000a5`052fe188 : nt!NtDeviceIoControlFile+0x56
+fffffa0f`9ffb8bb0 00007fff`60290084     : 00007fff`5d90b5aa 000000a5`00000007 00000000`00000002 000001d5`00000020 : nt!KiSystemServiceCopyEnd+0x25 (TrapFrame @ fffffa0f`9ffb8c20)
+000000a5`052fe5d8 00007fff`5d90b5aa     : 000000a5`00000007 00000000`00000002 000001d5`00000020 00000000`00000000 : 0x00007fff`60290084
+000000a5`052fe5e0 000000a5`00000007     : 00000000`00000002 000001d5`00000020 00000000`00000000 000000a5`052fe648 : 0x00007fff`5d90b5aa
+000000a5`052fe5e8 00000000`00000002     : 000001d5`00000020 00000000`00000000 000000a5`052fe648 00000000`00500037 : 0x000000a5`00000007
+000000a5`052fe5f0 000001d5`00000020     : 00000000`00000000 000000a5`052fe648 00000000`00500037 000001d5`e7228be0 : 0x2
+000000a5`052fe5f8 00000000`00000000     : 000000a5`052fe648 00000000`00500037 000001d5`e7228be0 000001d5`00000738 : 0x000001d5`00000020
+

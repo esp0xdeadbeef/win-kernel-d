@@ -2,10 +2,8 @@
 
 # Summary
 
-* Importance of learning internals of a
-modern operating system.
-* How complicated apparently simple
-looking things can be.
+* Importance of learning internals of a modern operating system.
+* How complicated apparently simple looking things can be.
 * Whether to be in world of abstraction of reality or to be in world of actual reality?
 * What are the gains for all the hard work?
 
@@ -33,10 +31,25 @@ Note
 4. conhost created by `helloworld.exe` where is code for that?
 5. Conhost is started by `helloworld.exe` even before a usermode debugger started.
 6. So we need a much earlier break in the run of creating the process for `helloworld.exe`
-7. bp on nt!MmCreateProcessAddressSpace in kd.
+7. bp on `nt!MmCreateProcessAddressSpace` in kd.
 8. Starting hello world again.
 9. Looking at the stack with create conhost.
 10. bp /p <helloworldEProcess> condrv!CdpFastloDeviceConftrol
+
+Check for the output (including of how to use it) of this function in [video-debugging.wsd.out](video-debugging.wsd.out)
+```
+bp condrv!CdpFastIoDeviceControl ".echo \"setting breakpoint chain on condrv!CdpFastIoDeviceControl, do a `bl` to check how i did it\";.echo \"bp 0\";!process -1 0;!thread; bd 0; bp nt!MmCreateProcessAddressSpace \"bd 1;.echo \\\"bp 1\\\";!thread;g\"; g"
+```
+Here is how to do it:
+
+![alt text](image-3.png)
+
+As you can see, the lined red is the command in kd, the blue lined thing is the application (`helloworld.exe`) in my case `ConsoleApplication1.exe`.
+
+When clicking on the blue bordered application `ConsoleApplication1.exe` you will get the same output as in the video as shown in the screenshot below.
+
+![alt text](image-4.png)
+
 11. See printf and getch calls.
 12. Looking at the threads inside conhost.
 

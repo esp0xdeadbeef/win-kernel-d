@@ -50,14 +50,24 @@ ffff8185`b911ebb0 00007ff9`7ecb1974     : 00007ff9`7c3e6c3b 0000021f`00000047 00
 ```
 
 
-# break on condrv (not a function anymore in windows 11)
-bp condrv!CdpFastIoDeviceControl
+# break on condrv
+
+```wsd
+bc *
+bp condrv!CdpFastIoDeviceControl ".echo \"bp 0\";!process;!thread; bd 0; g"
+bp nt!MmCreateProcessAddressSpace "bd 1;.echo \"bp 1\";!thread;g"
+```
 
 
-# searching for alternatives...
-
-# list the information of the thread of the current process (of helloworld.exe):
+# usefull other commands:
+## list the information of the thread of the current process (of helloworld.exe):
 !tread
-# list all active process:
+## list all active process:
 !process 0 0
+
+## list the thread when starting helloworld
+
+
+![alt text](image-2.png)
+
 
