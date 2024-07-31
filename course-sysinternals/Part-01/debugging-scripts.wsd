@@ -1,13 +1,11 @@
 .echo "Loaded from:"
 .echo "$$>a<${$arg0}"
-
-* .echo test test test
-
 bc *
+bp condrv!CdpFastIoDeviceControl ".echo \"setting breakpoint chain on condrv!CdpFastIoDeviceControl, do a `bl` to check how i did it\";.echo \"bp 0\";!process -1 0;!thread; bd 0; bp nt!MmCreateProcessAddressSpace \"bd 1;.echo \\\"bp 1\\\";!thread;g\"; g"
+
 
 * bp condrv!CdpFastIoDeviceControl ".echo \"bp 0\";!process -1; !thread; bd 0; g"
 * bp nt!MmCreateProcessAddressSpace "bd 1;.echo \"bp 1\";!thread;g"
-bp condrv!CdpFastIoDeviceControl ".echo \"setting breakpoint chain on condrv!CdpFastIoDeviceControl, do a `bl` to check how i did it\";.echo \"bp 0\";!process -1 0;!thread; bd 0; bp nt!MmCreateProcessAddressSpace \"bd 1;.echo \\\"bp 1\\\";!thread;g\"; g"
 
 
 
@@ -18,3 +16,5 @@ bp condrv!CdpFastIoDeviceControl ".echo \"setting breakpoint chain on condrv!Cdp
 
 * bp condrv!CdpFastIoDeviceControl "g"
 * $$>a<\\tsclient\_home_deadbeef_github_win-kernel-d\course-sysinternals\Part-01\debugging-scripts.wsd
+
+
