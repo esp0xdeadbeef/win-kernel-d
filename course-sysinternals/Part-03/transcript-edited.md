@@ -104,7 +104,7 @@ I have broken into the CreateProcess function, so the process which I am debuggi
 
 This is the call stack. This is our look. This is one of the most important DLLs as far as the shell is concerned. I'm not going to go into the details of that. It is trying to create a process, so how do we confirm that this is the Notepad which is being created?
 
-The first parameter to a CreateProcess API is the name of the `.exe`, which we have mentioned before. I'm going to execute the command `R` to see the registers. In a 64-bit calling convention, the first parameter is always passed in the `RCX` register.
+The first parameter to a CreateProcess API is the name of the `.exe`, which we have mentioned before. I'm going to execute the command `R` to see the registers. In a 64-bit [calling convention](https://learn.microsoft.com/en-us/cpp/build/x64-calling-convention?view=msvc-170), the first parameter is always passed in the `RCX` register.
 
 So, I'm going to execute `DU` on that pointer. I got `C:\Windows\notepad.exe`, so this was the `.exe` I was trying to start. All these commands which I am trying to execute here are discussed in the WinDbg presentation series. So, if you're not familiar, once again, please refer to that.
 
@@ -129,9 +129,5 @@ I'm going to press `F10`. A Notepad got started, as you can see here, and I'm go
 Coming back to the summary and to the presentation, we have seen process creation, and we have seen a process creation API from user mode. That's about the presentation.
 
 Now, reviews, comments, and suggestions: I would like to take them from one single location, so if you don't mind, I would like to follow this particular pattern for the reviews and comments.
-
-Unfortunately, it is not really useful to me if you update the YouTube comments, as YouTube is just one way we publish content. Now, if you think you need more personal attention or have some in-depth doubt or need some more training, please feel free to follow all these links. Also, please refer someone if you think they can benefit from similar sessions.
-
-Also, these sessions are available online as well as direct classroom training.
 
 So, that's it. Thank you for watching, see you next time!
