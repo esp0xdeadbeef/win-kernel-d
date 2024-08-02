@@ -29,16 +29,13 @@ In this overview, we'll explore various debugger commands and the intricacies of
 
 In the demonstration, we're connected to a `Windows 8.1` machine. Commands like `!process 0 0` will be used to display the processes running on the system.
 
-We are going to make a small C++ program and debug on the function `printf` or `GetCommandLine();` (i don't know yet)
-
 
 ### Detailed Exploration:
 - Increasing verbosity with `!process 0x7` provides the kernel-mode stack of the thread.
 - Switching context with `.process` and viewing the user mode stack to understand address space changes.
 
 ### Advanced Commands:
-- `!process 0x17`: A powe
-rful command to view the user mode stack and the transitions in context. Useful for deep dives into process analysis.
+- `!process 0x17`: A powerful command to view the user mode stack and the transitions in context. Useful for deep dives into process analysis.
 
 ## Summary
 We've explored essential debugger commands that are invaluable for process analysis. The `!process 0x17` command, although undocumented, provides comprehensive insights into the process structure and its user mode activities.
