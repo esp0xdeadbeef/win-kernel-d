@@ -12,7 +12,7 @@ int main()
     while (1)
     {
         LPTSTR test = GetCommandLine();
-        printf("%s", test);
+        printf("%S", test);
         _getch();
     }
     return 0;
