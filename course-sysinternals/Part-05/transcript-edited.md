@@ -6,7 +6,7 @@ In this presentation, we're going to look at metadata structures of a process in
 
 As a matter of fact, everything you see in an operating system is a data structure. For example, the window in which you see this particular presentation, the process which hosts it, and the thread that runs it, all are pieces of memory in well-defined kernel data structures.
 
-Here, we're going to look at some of the data structures of a process in Windows. Since I mentioned earlier, a process is a set of page table entries arranged more or less like a B-tree with a root as CR3 (page directory base). The page table entries are one of the most important components of a process and reside in physical memory. We won't be looking at that in this particular presentation. Other presentations explain the page table entries in CR3 in detail.
+Here, we're going to look at some of the data structures of a process in Windows. Since I mentioned earlier, a process is a set of page table entries arranged more or less like a B-tree with a root as `CR3` (page directory base). The page table entries are one of the most important components of a process and reside in physical memory. We won't be looking at that in this particular presentation. Other presentations explain the page table entries in `CR3` in detail.
 
 ## Kernel Data Structures
 
@@ -14,7 +14,7 @@ Here, we're going to look at some of the data structures of a process in Windows
 
 We will look at some of the kernel data structures like `_KPROCESS`, `_EPROCESS`, and `_PEB`. These are the variables in the kernel related to a process used for bookkeeping.
 
-### KPROCESS and EPROCESS
+### `_KPROCESS` and `_EPROCESS`
 
 ![alt text](image-1.png)
 
