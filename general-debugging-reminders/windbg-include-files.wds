@@ -144,5 +144,14 @@
 .echo "Dump all the processes within the _EPROCESS structure:"
 .echo "    dt nt!_EPROCESS -l ActiveProcessLinks.Flink ImageFileName (ffffe386`318ff488 - 0x448)"
 
+.echo "Switching the debugging context to user or system tasks:"
+.echo "attach to the default System process"
+.echo ".process /p 0 "
+.echo "Switch to a specific environment from a process:"
+.echo ".process /r /p <pointer>"
+.echo "Getting debugging information about a specific process:"
+.echo "!process 0 0 notepad.exe"
+.echo "Getting verbose debugging information about a specific process:"
+.echo "!process 0 0x17 notepad.exe"
 
 $$>a<\\tsclient\_home_deadbeef_github_win-kernel-d\course-sysinternals\Part-01\debugging-scripts.wsd

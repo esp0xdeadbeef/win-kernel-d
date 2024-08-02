@@ -1,0 +1,909 @@
+0: kd> !peb
+PEB NULL...
+0: kd> g
+Break instruction exception - code 80000003 (first chance)
+*******************************************************************************
+*                                                                             *
+*   You are seeing this message because you pressed either                    *
+*       CTRL+C (if you run console kernel debugger) or,                       *
+*       CTRL+BREAK (if you run GUI kernel debugger),                          *
+*   on your debugger machine's keyboard.                                      *
+*                                                                             *
+*                   THIS IS NOT A BUG OR A SYSTEM CRASH                       *
+*                                                                             *
+* If you did not intend to break into the debugger, press the "g" key, then   *
+* press the "Enter" key now.  This message might immediately reappear.  If it *
+* does, press "g" and "Enter" again.                                          *
+*                                                                             *
+*******************************************************************************
+nt!DbgBreakPointWithStatus:
+fffff803`05820280 cc              int     3
+0: kd> !process 0 0 explorer.exe
+PROCESS ffff80083ef52080
+    SessionId: 1  Cid: 199c    Peb: 00759000  ParentCid: 1928
+    DirBase: 17b81c000  ObjectTable: 00000000  HandleCount:   0.
+    Image: explorer.exe
+
+PROCESS ffff8008415510c0
+    SessionId: 1  Cid: 0260    Peb: 00c20000  ParentCid: 0de4
+    DirBase: 109909000  ObjectTable: ffffac8abb9c7780  HandleCount: 4981.
+    Image: explorer.exe
+
+0: kd> .process /r /p ffff8008415510c0
+Implicit process is now ffff8008`415510c0
+.cache forcedecodeuser done
+Loading User Symbols
+................................................................
+................................................................
+................................................................
+................................................................
+................................................................
+.....................
+
+************* Symbol Loading Error Summary **************
+Module name            Error
+SharedUserData         No error - symbol load deferred
+				Symbol loading has been deferred because this symbol is not needed
+				at this time. Use reload /f to force load symbols.
+
+0: kd> !peb
+PEB at 0000000000c20000
+    InheritedAddressSpace:    No
+    ReadImageFileExecOptions: No
+    BeingDebugged:            Yes
+    ImageBaseAddress:         00007ff68e7a0000
+    NtGlobalFlag:             0
+    NtGlobalFlag2:            0
+    Ldr                       00007ffd7f0b6440
+    Ldr.Initialized:          Yes
+    Ldr.InInitializationOrderModuleList: 0000000000ff23e0 . 00000000201dd960
+    Ldr.InLoadOrderModuleList:           0000000000ff2560 . 00000000201dd940
+    Ldr.InMemoryOrderModuleList:         0000000000ff2570 . 00000000201dd950
+                    Base TimeStamp                     Module
+            7ff68e7a0000 5b4afbdf Jul 15 09:46:39 2018 C:\Windows\explorer.exe
+            7ffd7ef30000 67ca8829 Mar 07 06:46:17 2025 C:\WINDOWS\SYSTEM32\ntdll.dll
+            7ffd7e760000 36466623 Nov 09 04:48:51 1998 C:\WINDOWS\System32\KERNEL32.DLL
+            7ffd7c260000 10210ca8 Jul 30 01:03:04 1978 C:\WINDOWS\System32\KERNELBASE.dll
+            7ffd7ca70000 8e0806c9 Jul 05 20:04:57 2045 C:\WINDOWS\System32\msvcp_win.dll
+            7ffd7c610000 10c46e71 Nov 30 22:19:45 1978 C:\WINDOWS\System32\ucrtbase.dll
+            7ffd7d170000 eadd58d3 Nov 12 05:32:19 2094 C:\WINDOWS\System32\combase.dll
+            7ffd61b00000 ab114f9d Dec 12 01:53:49 2060 C:\WINDOWS\SYSTEM32\AEPIC.dll
+            7ffd7cc70000 045b6c12 Apr 26 03:38:26 1972 C:\WINDOWS\System32\RPCRT4.dll
+            7ffd615a0000 95f2f666 Sep 20 07:19:34 2049 C:\WINDOWS\SYSTEM32\TWINAPI.dll
+            7ffd7e580000 657b2709 Dec 14 17:02:17 2023 C:\WINDOWS\System32\msvcrt.dll
+            7ffd7e480000 b0695f14 Oct 15 19:40:36 2063 C:\WINDOWS\System32\OLEAUT32.dll
+            7ffd7ce90000 9e92f56b Apr 22 02:40:11 2054 C:\WINDOWS\System32\sechost.dll
+            7ffd7cf90000 a5301d83 Oct 27 09:38:43 2057 C:\WINDOWS\System32\shcore.dll
+            7ffd7e850000 dcab4278 Apr 26 17:59:52 2087 C:\WINDOWS\System32\advapi32.dll
+            7ffd7cc40000 5a31de46 Dec 14 03:13:26 2017 C:\WINDOWS\System32\bcrypt.dll
+            7ffd7b800000 29678987 Jan 05 23:41:11 1992 C:\WINDOWS\SYSTEM32\USERENV.dll
+            7ffd7e6b0000 672b2c78 Nov 06 09:44:40 2024 C:\WINDOWS\System32\shlwapi.dll
+            7ffd7c120000 eb1e08e2 Dec 31 07:08:34 2094 C:\WINDOWS\SYSTEM32\powrprof.dll
+            7ffd7d740000 785507b7 Dec 22 05:27:35 2033 C:\WINDOWS\System32\user32.dll
+            7ffd7c730000 331718eb Feb 28 18:42:03 1997 C:\WINDOWS\System32\win32u.dll
+            7ffd7d500000 533dc7aa Apr 03 22:42:18 2014 C:\WINDOWS\System32\GDI32.dll
+            7ffd7c950000 05ca1d5d Jan 29 06:04:29 1973 C:\WINDOWS\System32\gdi32full.dll
+            7ffd7dc20000 80bcc9a1 Jun 11 10:00:33 2038 C:\WINDOWS\System32\SHELL32.dll
+            7ffd7a1b0000 33b965a2 Jul 01 22:16:34 1997 C:\WINDOWS\SYSTEM32\windows.storage.dll
+            7ffd79900000 6d095044 Dec 20 19:21:56 2027 C:\WINDOWS\SYSTEM32\dxgi.dll
+            7ffd77700000 e12a27fd Sep 15 17:25:49 2089 C:\WINDOWS\SYSTEM32\PROPSYS.dll
+            7ffd7b290000 8aca7e42 Oct 15 14:53:22 2043 C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+            7ffd7b050000 1f99e550 Oct 20 10:03:28 1986 C:\WINDOWS\SYSTEM32\WTSAPI32.dll
+            7ffd70400000 e8e2e86d Oct 24 03:05:49 2093 C:\WINDOWS\SYSTEM32\WININET.dll
+            7ffd797e0000 a5efeec5 Mar 21 20:34:29 2058 C:\WINDOWS\SYSTEM32\UxTheme.dll
+            7ffd79a10000 cf3c44bb Mar 05 04:04:27 2080 C:\WINDOWS\SYSTEM32\dwmapi.dll
+            7ffd7b4f0000 7bf67163 Nov 27 04:54:11 2035 C:\WINDOWS\SYSTEM32\SspiCli.dll
+            7ffd743f0000 af5b3dbf Mar 24 21:06:23 2063 C:\WINDOWS\SYSTEM32\twinapi.appcore.dll
+            7ffd7a070000 6ae12fbc Oct 28 00:11:56 2026 C:\WINDOWS\SYSTEM32\wintypes.dll
+            7ffd7c760000 ee775c51 Oct 11 15:17:05 2096 C:\WINDOWS\System32\bcryptPrimitives.dll
+            7ffd7b2b0000 f264e279 Nov 13 07:17:29 2098 C:\WINDOWS\SYSTEM32\ntmarta.dll
+            7ffd7c100000 84929b4c Jun 25 03:28:44 2040 C:\WINDOWS\SYSTEM32\UMPDC.dll
+            7ffd7e710000 25b6f46e Jan 19 12:05:18 1990 C:\WINDOWS\System32\IMM32.DLL
+            7ffd798c0000 ed36530a Feb 11 01:59:54 2096 C:\WINDOWS\SYSTEM32\dxcore.dll
+            7ffd610a0000 68d74f69 Sep 27 04:43:53 2025 C:\WINDOWS\SYSTEM32\NInput.dll
+            7ffd7e910000 1bd2fc8f Oct 17 00:00:47 1984 C:\WINDOWS\System32\MSCTF.dll
+            7ffd7d530000 4dadec65 Apr 19 22:11:17 2011 C:\WINDOWS\System32\ole32.dll
+            7ffd60e00000 19bdab14 Sep 08 11:15:00 1983 C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.3672_none_2713b9d173822955\comctl32.dll
+            7ffd7d910000 8bfd4b9e Jun 04 08:03:10 2044 C:\WINDOWS\System32\clbcatq.dll
+            7ffd60c00000 2ade2e61 Oct 16 04:52:17 1992 C:\Windows\System32\appresolver.dll
+            7ffd7c190000 3f8e9009 Oct 16 14:33:13 2003 C:\WINDOWS\SYSTEM32\profapi.dll
+            7ffd73be0000 5a3ee367 Dec 24 00:14:47 2017 C:\Windows\System32\OneCoreUAPCommonProxyStub.dll
+            7ffd7be20000 0b33d799 Dec 16 08:28:25 1975 C:\WINDOWS\SYSTEM32\CFGMGR32.dll
+            7ffd60450000 a36b0516 Nov 17 16:17:42 2056 C:\Windows\System32\StartTileData.dll
+            7ffd7c7e0000 3ec72cae May 18 08:48:14 2003 C:\WINDOWS\System32\CRYPT32.dll
+            7ffd7ad10000 6e557212 Aug 28 18:38:42 2028 C:\Windows\System32\IPHLPAPI.DLL
+            7ffd6c210000 8b666879 Feb 10 20:14:01 2044 C:\Windows\System32\MrmCoreR.dll
+            7ffd77310000 ceb3ac22 Nov 22 13:25:06 2079 C:\WINDOWS\SYSTEM32\usermgrcli.dll
+            7ffd6c090000 b54a684c May 20 05:41:00 2066 C:\Windows\System32\Windows.UI.dll
+            7ffd67000000 f8882e86 Feb 18 03:52:54 2102 C:\Windows\System32\Windows.StateRepositoryPS.dll
+            7ffd6cbb0000 3cc4b8aa Apr 23 03:28:10 2002 C:\WINDOWS\SYSTEM32\languageoverlayutil.dll
+            7ffd63210000 51b91d65 Jun 13 03:16:21 2013 C:\Windows\System32\Windows.ApplicationModel.dll
+            7ffd75d20000 da387fb5 Jan 06 07:09:57 2086 C:\Windows\System32\AppXDeploymentClient.dll
+            7ffd6c400000 e86ca3ba Jul 26 10:05:14 2093 C:\Windows\System32\bcp47mrm.dll
+            7ffd72140000 66e109b1 Sep 11 05:08:33 2024 C:\Windows\System32\usermgrproxy.dll
+            7ffd69340000 6f544e35 Mar 10 01:13:41 2029 C:\Windows\System32\OneCoreCommonProxyStub.dll
+            7ffd67590000 fa311e5c Jan 06 11:37:16 2103 C:\Windows\System32\Windows.CloudStore.dll
+            7ffd680f0000 040f741d Feb 28 11:40:29 1972 C:\WINDOWS\System32\IDStore.dll
+            7ffd77800000 69d7c43c Apr 09 17:22:36 2026 C:\WINDOWS\System32\SAMLIB.dll
+            7ffd601f0000 9166749b Apr 21 00:07:23 2047 C:\Windows\System32\AppExtension.dll
+            7ffd719f0000 1b94ab56 Aug 30 17:33:42 1984 C:\Windows\System32\Windows.StateRepositoryClient.dll
+            7ffd62eb0000 67ea07c3 Mar 31 05:10:59 2025 C:\WINDOWS\System32\wlidprov.dll
+            7ffd77ad0000 eab0c51f Oct 09 11:02:23 2094 C:\WINDOWS\SYSTEM32\policymanager.dll
+            7ffd779f0000 3bcb53a2 Oct 15 23:22:42 2001 C:\WINDOWS\SYSTEM32\msvcp110_win.dll
+            7ffd72350000 9d10db80 Jul 03 05:54:40 2053 C:\Windows\System32\Bcp47Langs.dll
+            7ffd6d8b0000 600683cb Jan 19 08:01:31 2021 C:\Windows\System32\SystemSettings.DataModel.dll
+            7ffd696d0000 3c64d16f Feb 09 08:36:15 2002 C:\WINDOWS\system32\windowsudk.shellcommon.dll
+            7ffd776c0000 5f16f639 Jul 21 16:05:45 2020 C:\WINDOWS\system32\XmlLite.dll
+            7ffd71b50000 3493b545 Dec 14 11:30:29 1997 C:\WINDOWS\SYSTEM32\windows.staterepositorycore.dll
+            7ffd6cca0000 0bc7e2b4 Apr 06 16:31:16 1976 C:\WINDOWS\System32\StructuredQuery.dll
+            7ffd71b70000 f51d7a90 Apr 25 17:24:00 2100 C:\Windows\System32\Windows.System.Launcher.dll
+            7ffd66930000 6ee6ca05 Dec 16 23:32:37 2028 C:\WINDOWS\system32\Windows.Storage.Search.dll
+            7ffd668a0000 0930c67b Nov 20 15:58:03 1974 C:\WINDOWS\SYSTEM32\edputil.dll
+            7ffd667d0000 bb1f093b Jun 25 10:09:31 2069 C:\Windows\System32\Windows.Web.dll
+            7ffd630c0000 c4b87261 Aug 02 09:57:21 2074 C:\Windows\System32\Windows.Security.Authentication.Web.Core.dll
+            7ffd6f130000 3e9e835d Apr 17 12:35:09 2003 C:\Windows\System32\iertutil.dll
+            7ffd5ece0000 27f0973b Mar 27 13:59:39 1991 C:\Windows\System32\Taskbar.dll
+            7ffd7bfd0000 1911ca7e May 01 02:19:10 1983 C:\WINDOWS\SYSTEM32\winsta.dll
+            7ffd6f3f0000 7d529f5c Aug 17 08:19:08 2036 C:\WINDOWS\SYSTEM32\urlmon.dll
+            7ffd7ab30000 af5bc381 Mar 25 07:37:05 2063 C:\Windows\System32\SLC.dll
+            7ffd78920000 3f5bda39 Sep 08 03:24:09 2003 C:\Windows\System32\DWrite.dll
+            7ffd78330000 25f2bd72 Mar 05 20:26:42 1990 C:\Windows\System32\d2d1.dll
+            7ffd70e00000 cb291c48 Jan 03 21:57:44 2078 C:\Windows\System32\srvcli.dll
+            7ffd7ad00000 eeaa3672 Nov 19 04:01:06 2096 C:\Windows\System32\netutils.dll
+            7ffd67b00000 ed7a014f Apr 02 11:05:19 2096 C:\WINDOWS\SYSTEM32\SndVolSSO.DLL
+            7ffd73650000 aed02870 Dec 09 09:10:24 2062 C:\WINDOWS\SYSTEM32\MMDevAPI.DLL
+            7ffd7bec0000 c28736a9 Jun 02 17:00:57 2073 C:\WINDOWS\System32\DPAPI.dll
+            7ffd7b980000 f6072bfa Oct 19 23:39:06 2100 C:\WINDOWS\System32\CRYPTBASE.dll
+            7ffd7be70000 53f5e575 Aug 21 14:26:29 2014 C:\WINDOWS\SYSTEM32\DEVOBJ.dll
+            7ffd56210000 240a8547 Feb 28 12:40:55 1989 C:\WINDOWS\SYSTEM32\rdpendp.dll
+            7ffd5f670000 9300bf50 Feb 26 04:15:28 2048 C:\Windows\System32\Windows.Web.Http.dll
+            7ffd7e630000 e911ea68 Nov 28 17:50:48 2093 C:\WINDOWS\System32\WS2_32.dll
+            7ffd61310000 ad049a8a Dec 25 19:14:34 2061 C:\Windows\System32\OLEACC.dll
+            7ffd6c000000 b812c805 Nov 11 13:03:17 2067 C:\WINDOWS\SYSTEM32\ondemandconnroutehelper.dll
+            7ffd79220000 41404c38 Sep 09 14:27:36 2004 C:\WINDOWS\system32\CoreMessaging.dll
+            7ffd7ac20000 06b292b2 Jul 24 14:50:58 1973 C:\WINDOWS\SYSTEM32\firewallapi.dll
+            7ffd7aba0000 4bd2b8af Apr 24 11:23:59 2010 C:\WINDOWS\SYSTEM32\fwbase.dll
+            7ffd7b700000 22162918 Feb 14 23:54:16 1988 C:\WINDOWS\system32\mswsock.dll
+            7ffd77fd0000 caf4ab3f Nov 25 03:17:35 2077 C:\WINDOWS\SYSTEM32\WINNSI.DLL
+            7ffd7e750000 5a7e5602 Feb 10 03:16:34 2018 C:\WINDOWS\System32\NSI.dll
+            7ffd6ac10000 8bc16722 Apr 19 21:44:34 2044 C:\Windows\System32\Windows.UI.Immersive.dll
+            7ffd78ba0000 5ce4d747 May 22 06:59:51 2019 C:\Windows\System32\dcomp.dll
+            7ffd61260000 c806b7cf May 05 07:51:11 2076 C:\WINDOWS\system32\dataexchange.dll
+            7ffd6a690000 cd5f7ea9 Mar 09 12:40:25 2079 C:\WINDOWS\SYSTEM32\TextShaping.dll
+            7ffd5f3c0000 a64896b6 May 28 03:30:30 2058 C:\WINDOWS\system32\explorerframe.dll
+            7ffd64a10000 21aca997 Nov 26 23:22:15 1987 C:\Windows\System32\SettingsHandlers_DesktopTaskbar.dll
+            7ffd79630000 c2ae0672 Jul 02 03:33:38 2073 C:\WINDOWS\system32\windowscodecs.dll
+            7ffd61d60000 660e8d0e Apr 04 13:20:46 2024 C:\WINDOWS\system32\twinui.pcshell.dll
+            7ffd6c330000 6b36c85d Dec 31 22:25:49 2026 C:\WINDOWS\system32\wincorlib.DLL
+            7ffd5f8a0000 05263116 Sep 26 22:56:54 1972 C:\Windows\System32\windows.immersiveshell.serviceprovider.dll
+            7ffd67bb0000 1cab3d70 Mar 29 23:47:12 1985 C:\Windows\System32\deviceassociation.dll
+            7ffd75130000 dbf79ba2 Dec 11 10:32:18 2086 C:\WINDOWS\SYSTEM32\WINHTTP.dll
+            7ffd63790000 28a685f1 Aug 12 14:58:25 1991 C:\WINDOWS\System32\twinui.appcore.dll
+            7ffd567a0000 47a28cbf Feb 01 04:06:39 2008 C:\WINDOWS\system32\twinui.dll
+            7ffd7b9c0000 03d0f351 Jan 12 01:50:25 1972 C:\WINDOWS\System32\MSASN1.dll
+            7ffd7cb10000 44a1863c Jun 27 21:25:48 2006 C:\WINDOWS\System32\WINTRUST.dll
+            7ffd7b960000 ebaf0d75 Apr 20 08:06:45 2095 C:\WINDOWS\SYSTEM32\CRYPTSP.dll
+            7ffd7b1f0000 706ed8e9 Oct 10 09:44:41 2029 C:\WINDOWS\system32\rsaenh.dll
+            7ffd73110000 e148209c Oct 08 11:02:20 2089 C:\WINDOWS\SYSTEM32\textinputframework.dll
+            7ffd7ad40000 08d128ba Sep 09 04:19:38 1974 C:\WINDOWS\SYSTEM32\DNSAPI.dll
+            7ffd74e70000 9a6e599a Feb 07 13:52:42 2052 C:\Windows\System32\rasadhlp.dll
+            7ffd74360000 242c3586 Mar 26 01:57:42 1989 C:\WINDOWS\System32\fwpuclnt.dll
+            7ffd7b0f0000 c65f24be Jun 19 00:54:54 2075 C:\WINDOWS\system32\schannel.DLL
+            7ffd6c3d0000 e3d8f7b5 Feb 18 15:27:01 2091 C:\WINDOWS\SYSTEM32\cldapi.dll
+            7ffd72050000 15f816c1 Sep 06 01:24:49 1981 C:\WINDOWS\SYSTEM32\FLTLIB.DLL
+            7ffd7bb20000 d9271a72 Jun 12 23:09:06 2085 C:\WINDOWS\SYSTEM32\ncrypt.dll
+            7ffd7bae0000 6acdc5bd Oct 13 07:46:37 2026 C:\WINDOWS\SYSTEM32\NTASN1.dll
+            7ffd666d0000 162f7459 Oct 18 01:18:49 1981 C:\WINDOWS\system32\ncryptsslp.dll
+            7ffd65950000 7daac69f Oct 23 05:06:07 2036 C:\Windows\System32\cryptnet.dll
+            7ffd6ce50000 d38365d2 Jun 13 21:17:38 2082 C:\Windows\System32\sppc.dll
+            7ffd60140000 e847a942 Jun 28 08:54:58 2093 C:\WINDOWS\system32\mlang.dll
+            7ffd5ec20000 0139793b Aug 26 20:36:43 1970 C:\WINDOWS\System32\ApplicationFrame.dll
+            7ffd759b0000 f7ac7b07 Sep 04 13:20:39 2101 C:\Windows\System32\windowmanagementapi.dll
+            7ffd5eb70000 9042b6b5 Sep 11 17:07:33 2046 C:\WINDOWS\system32\Windows.Internal.ShellCommon.dll
+            7ffd61aa0000 1f25445e Jul 23 22:53:50 1986 C:\WINDOWS\system32\activationclient.dll
+            7ffd79d20000 ac4b70cc Aug 07 09:27:08 2061 C:\WINDOWS\SYSTEM32\RMCLIENT.dll
+            7ffd5e6b0000 9f6502ef Sep 28 10:33:51 2054 C:\WINDOWS\SYSTEM32\ntshrui.dll
+            7ffd65570000 4f690014 Mar 20 23:09:24 2012 C:\WINDOWS\SYSTEM32\cscapi.dll
+            7ffd5e4d0000 8fba3e38 May 31 04:45:12 2046 C:\Windows\System32\thumbcache.dll
+            7ffd5ea70000 2f407c4f Feb 14 10:47:59 1995 C:\Windows\System32\HolographicExtensions.dll
+            7ffd5f830000 afb79fb8 Jun 02 23:52:56 2063 C:\Windows\System32\AboveLockAppHost.dll
+            7ffd61bc0000 3c3a82f2 Jan 08 06:26:10 2002 C:\WINDOWS\SYSTEM32\LINKINFO.dll
+            7ffd5db90000 29c61e34 Mar 17 17:28:36 1992 C:\Windows\System32\Windows.FileExplorer.Common.dll
+            7ffd795e0000 83c8805b Jan 23 19:15:55 2040 C:\WINDOWS\SYSTEM32\pfclient.dll
+            7ffd717e0000 3da8a9e3 Oct 13 01:01:55 2002 C:\Windows\System32\InputHost.dll
+            7ffd694b0000 a79daada Feb 10 19:39:22 2059 C:\Windows\System32\Windows.UI.Core.TextInput.dll
+            7ffd65680000 91eb5952 Jul 30 19:22:26 2047 C:\Windows\System32\Windows.Shell.BlueLightReduction.dll
+            7ffd5e5a0000 10ccce25 Dec 07 06:46:13 1978 C:\Windows\System32\Windows.Internal.Signals.dll
+            7ffd76860000 a629a812 May 04 16:24:18 2058 C:\WINDOWS\SYSTEM32\directxdatabasehelper.dll
+            7ffd5df80000 c97de36e Feb 13 20:37:18 2077 C:\Windows\System32\TileDataRepository.dll
+            7ffd71010000 a0ededa9 Jul 23 11:23:53 2055 C:\Windows\System32\Windows.StateRepository.dll
+            7ffd70f50000 cde2aa8c Jun 17 01:34:36 2079 C:\Windows\System32\StateRepository.Core.dll
+            7ffd73a20000 d4ee5f9a Mar 16 04:03:54 2083 C:\Windows\System32\mscms.dll
+            7ffd5d4e0000 905ac6c3 Sep 29 23:10:27 2046 C:\WINDOWS\system32\Windows.UI.FileExplorer.dll
+            7ffd6a560000 c4908cb8 Jul 03 03:39:04 2074 C:\WINDOWS\system32\WinUICohabitation.dll
+            7ffd68de0000 8c8eb99e Sep 22 15:31:10 2044 C:\WINDOWS\SYSTEM32\MFPlat.DLL
+            7ffd68da0000 ee22584f Aug 08 03:37:19 2096 C:\WINDOWS\SYSTEM32\RTWorkQ.DLL
+            7ffd79d60000 162c5c4d Oct 15 16:59:25 1981 C:\WINDOWS\SYSTEM32\resourcepolicyclient.dll
+            7ffd73b60000 872603a3 Nov 07 06:37:39 2041 C:\Windows\System32\ActXPrxy.dll
+            7ffd64390000 cb39d752 Jan 16 14:32:02 2078 C:\WINDOWS\SYSTEM32\cdp.dll
+            7ffd67c00000 ab3f7f82 Jan 16 02:42:26 2061 C:\WINDOWS\SYSTEM32\WINBRAND.dll
+            7ffd5bfd0000 6d31c4aa Jan 20 11:49:14 2028 C:\WINDOWS\SYSTEM32\UIAutomationCore.DLL
+            7ffd5d120000 e48c46a4 Jul 04 16:39:32 2091 C:\Windows\System32\Windows.Devices.Enumeration.dll
+            7ffd7ba30000 5d9479d7 Oct 02 12:20:07 2019 C:\WINDOWS\SYSTEM32\Wldp.dll
+            7ffd74750000 ba9aa1a6 Mar 16 22:48:22 2069 C:\Windows\System32\Windows.Gaming.Input.dll
+            7ffd5d0b0000 4d801308 Mar 16 02:31:52 2011 C:\WINDOWS\System32\MSWB7.dll
+            7ffd5f340000 ecb00f45 Nov 01 05:47:01 2095 C:\Windows\System32\Windows.Internal.UI.Shell.WindowTabManager.dll
+            7ffd79510000 114ea630 Mar 15 18:30:24 1979 C:\WINDOWS\SYSTEM32\apphelp.dll
+            7ffd61ad0000 353a423c Apr 19 20:28:12 1998 C:\Windows\System32\DevDispItemProvider.dll
+            7ffd5cfb0000 50052909 Jul 17 10:57:45 2012 C:\Windows\System32\EhStorShell.dll
+            7ffd7ea70000 a28394ab May 26 04:04:27 2056 C:\WINDOWS\System32\SETUPAPI.dll
+            7ffd5ced0000 81111dbf Aug 14 09:09:51 2038 C:\WINDOWS\System32\cscui.dll
+            7ffd5d3f0000 7012b1b2 Aug 01 12:08:50 2029 C:\Windows\System32\NotificationControllerPS.dll
+            7ffd7d0f0000 fc603bee Mar 05 14:00:30 2104 C:\WINDOWS\System32\coml2.dll
+            7ffd5b070000 2abfceda Sep 23 03:56:42 1992 C:\WINDOWS\system32\NetworkExplorer.dll
+            7ffd70ec0000 63a31d27 Dec 21 15:50:15 2022 C:\WINDOWS\SYSTEM32\MPR.dll
+            7ffd597c0000 88fc8be4 Oct 30 04:24:20 2042 C:\WINDOWS\system32\mssprxy.dll
+            7ffd59a20000 e1037ad5 Aug 17 09:20:53 2089 C:\WINDOWS\System32\p9np.dll
+            7ffd66270000 a18ed760 Nov 22 11:43:44 2055 C:\WINDOWS\System32\drprov.dll
+            7ffd599f0000 528cf4bf Nov 20 18:43:27 2013 C:\WINDOWS\System32\ntlanman.dll
+            7ffd5b050000 4a72bda2 Jul 31 11:47:14 2009 C:\WINDOWS\System32\davclnt.dll
+            7ffd67230000 e807a80f May 10 19:44:47 2093 C:\Windows\System32\Windows.Networking.Connectivity.dll
+            7ffd5cff0000 d4cdc8a2 Feb 19 10:47:14 2083 C:\Windows\System32\PCShellCommonProxyStub.dll
+            7ffd75e70000 1cc09fb6 Apr 15 06:04:06 1985 C:\WINDOWS\SYSTEM32\CoreUIComponents.dll
+            7ffd5ce70000 d31a7d1c Mar 26 06:29:00 2082 C:\Windows\System32\Windows.UI.Accessibility.dll
+            7ffd63540000 e218feb0 Mar 15 20:21:20 2090 C:\Windows\System32\SwitcherDataModel.dll
+            7ffd5cd30000 3d92585e Sep 26 02:44:14 2002 C:\Windows\System32\ShellCommonCommonProxyStub.dll
+            7ffd62fb0000 143b2fc2 Oct 03 14:12:50 1980 C:\WINDOWS\SYSTEM32\daxexec.dll
+            7ffd62f60000 abffa634 Jun 10 21:42:44 2061 C:\WINDOWS\System32\container.dll
+            7ffd6a8e0000 122f671b Sep 02 07:01:15 1979 C:\Windows\System32\Windows.Globalization.dll
+            7ffd77860000 a57931e9 Dec 21 19:01:13 2057 C:\WINDOWS\SYSTEM32\dsreg.dll
+            7ffd5d1f0000 c2f7baf0 Aug 27 01:19:12 2073 C:\WINDOWS\SYSTEM32\cryptngc.dll
+            7ffd5e200000 c393ccb9 Dec 23 09:28:41 2073 C:\WINDOWS\SYSTEM32\dmEnrollEngine.DLL
+            7ffd61d20000 57951709 Jul 24 21:29:13 2016 C:\WINDOWS\SYSTEM32\cflapi.dll
+            7ffd5fee0000 615a9216 Oct 04 07:33:10 2021 C:\WINDOWS\SystemApps\MicrosoftWindows.Client.FileExp_cw5n1h2txyewy\VCRUNTIME140_1_APP.dll
+            7ffd5ca60000 615a9216 Oct 04 07:33:10 2021 C:\WINDOWS\SystemApps\MicrosoftWindows.Client.FileExp_cw5n1h2txyewy\MSVCP140_APP.dll
+            7ffd5ca40000 615a9216 Oct 04 07:33:10 2021 C:\WINDOWS\SystemApps\MicrosoftWindows.Client.FileExp_cw5n1h2txyewy\VCRUNTIME140_APP.dll
+            7ffd74f00000 592e4f3d May 31 07:06:05 2017 C:\WINDOWS\SYSTEM32\WKSCLI.DLL
+            7ffd74cd0000 381afe8b Oct 30 16:19:55 1999 C:\WINDOWS\System32\npmproxy.dll
+            7ffd70ef0000 877a136d Jan 10 00:55:25 2042 C:\Windows\System32\samcli.dll
+            7ffd5cb10000 ab0a8173 Dec 06 22:00:35 2060 C:\WINDOWS\system32\stobject.dll
+            7ffd5f810000 f1d12b92 Jul 24 07:13:54 2098 C:\WINDOWS\system32\BatMeter.dll
+            7ffd7c040000 7afbeca6 May 21 05:21:10 2035 C:\WINDOWS\SYSTEM32\sxs.dll
+            7ffd5e1e0000 4c70694d Aug 22 02:03:25 2010 C:\WINDOWS\System32\Windows.UI.Shell.dll
+            7ffd76f70000 54be883d Jan 20 17:54:21 2015 C:\WINDOWS\system32\WMICLNT.dll
+            7ffd5d270000 6f770508 Apr 05 10:10:48 2029 C:\WINDOWS\system32\prnfldr.dll
+            7ffd73800000 af4c3eac Mar 13 12:06:20 2063 C:\WINDOWS\system32\es.dll
+            7ffd6ad90000 c8679348 Jul 17 19:05:12 2076 C:\Windows\System32\Windows.UI.Xaml.dll
+            7ffd5a400000 a4c67585 Aug 08 06:13:57 2057 C:\Windows\ShellComponents\WindowsInternal.ComposableShell.DesktopHosting.dll
+            7ffd442b0000 a55356be Nov 23 01:52:14 2057 C:\Windows\ShellComponents\WindowsInternal.ComposableShell.Experiences.Switcher.dll
+            7ffd5a250000 95fc71ff Sep 27 11:57:19 2049 C:\Windows\ShellExperiences\TileControl.dll
+            7ffd44060000 6ea13e12 Oct 25 06:29:06 2028 C:\Windows\ShellComponents\TaskFlowUI.dll
+            7ffd5ce40000 7caf3033 Apr 15 09:05:23 2036 C:\Windows\ShellComponents\WindowsInternal.ShellUI.dll
+            7ffd5b490000 61f71a0d Jan 31 00:06:53 2022 C:\WINDOWS\SystemApps\Microsoft.UI.Xaml.CBS_8wekyb3d8bbwe\Microsoft.UI.Xaml.dll
+            7ffd56fc0000 73befd62 Jul 15 17:42:26 2031 C:\WINDOWS\system32\dxp.dll
+            7ffd56590000 76d7b500 Mar 07 23:41:04 2033 C:\WINDOWS\SYSTEM32\windows.media.devices.dll
+            7ffd56f50000 9cbdde62 May 01 07:08:50 2053 C:\WINDOWS\System32\Actioncenter.dll
+            7ffd65bc0000 6edb1128 Dec 08 02:08:56 2028 C:\WINDOWS\SYSTEM32\atlthunk.dll
+            7ffd5d4c0000 e93377b6 Dec 24 04:38:30 2093 C:\WINDOWS\system32\Syncreg.dll
+            7ffd63d80000 7aa247c6 Mar 14 04:25:58 2035 C:\Windows\System32\UiaManager.dll
+            7ffd63310000 4488416c Jun 08 17:25:32 2006 C:\Windows\System32\AudioSes.dll
+            7ffd780d0000 4ac6f2bf Oct 03 08:44:15 2009 C:\WINDOWS\SYSTEM32\d3d11.dll
+            7ffd75270000 fc469810 Feb 15 03:14:40 2104 C:\WINDOWS\SYSTEM32\d3d10warp.dll
+            7ffd5cd10000 4f29d01b Feb 02 00:51:55 2012 C:\Windows\System32\dusmapi.dll
+            7ffd5cc00000 ccb82443 Nov 02 14:06:11 2078 C:\WINDOWS\system32\wpdshserviceobj.dll
+            7ffd69d70000 12138395 Aug 12 03:19:17 1979 C:\Windows\System32\PortableDeviceTypes.dll
+            7ffd75c60000 82e9e1e7 Aug 07 23:36:39 2039 C:\Windows\System32\PortableDeviceApi.dll
+            7ffd5c9d0000 a82656ba May 25 12:40:58 2059 C:\WINDOWS\System32\cscobj.dll
+            7ffd56750000 2b1907aa Nov 29 19:10:50 1992 C:\WINDOWS\System32\srchadmin.dll
+            7ffd69e90000 80623448 Apr 03 16:59:20 2038 C:\WINDOWS\SYSTEM32\Windows.UI.Xaml.Controls.dll
+            7ffd43810000 6643f8fa May 15 01:51:22 2024 C:\WINDOWS\SystemApps\MicrosoftWindows.Client.Core_cw5n1h2txyewy\Taskbar.View.dll
+            7ffd566d0000 b2cae9b6 Jan 20 03:02:30 2065 C:\WINDOWS\SYSTEM32\MFSENSORGROUP.dll
+            7ffd56650000 b6a1e784 Feb 04 17:51:16 2067 C:\Windows\System32\shdocvw.dll
+            7ffd55b00000 992619a5 Jun 03 15:16:21 2051 C:\WINDOWS\System32\SyncCenter.dll
+            7ffd5a490000 ab7f65e2 Mar 05 13:58:10 2061 C:\Windows\System32\windows.internal.shell.broker.dll
+            7ffd55970000 3f7d5fd2 Oct 03 13:38:58 2003 C:\Windows\System32\imapi2.dll
+            7ffd435e0000 660ed1b0 Apr 04 18:13:36 2024 C:\Program Files (x86)\Common Files\Microsoft Shared\MSEnv\VSFileHandler_64.dll
+            7ffd433d0000 f717cabc May 14 18:33:00 2101 C:\WINDOWS\System32\pnidui.dll
+            7ffd77330000 99bdcf59 Sep 26 17:03:53 2051 C:\WINDOWS\System32\netprofm.dll
+            7ffd69c40000 4ae3255c Oct 24 18:03:40 2009 C:\Windows\System32\NetworkUXBroker.dll
+            7ffd750f0000 14916bb9 Dec 07 23:03:37 1980 C:\Windows\System32\dhcpcsvc.DLL
+            7ffd75110000 b9b8c33f Sep 26 15:59:27 2068 C:\Windows\System32\dhcpcsvc6.DLL
+            7ffd69630000 b41f194e Oct 05 04:56:14 2065 C:\Windows\System32\EthernetMediaManager.dll
+            7ffd6c3b0000 1e711274 Mar 09 05:32:52 1986 C:\Windows\System32\dot3api.dll
+            7ffd75040000 3ac4908a Mar 30 15:56:26 2001 C:\Windows\System32\MobileNetworking.dll
+            7ffd75060000 72d23717 Jan 17 02:21:27 2031 C:\WINDOWS\System32\wlanapi.dll
+            7ffd681d0000 cb52404e Feb 04 02:54:22 2078 C:\Windows\System32\threadpoolwinrt.dll
+            7ffd68400000 249261dd Jun 11 14:58:05 1989 C:\Windows\System32\Windows.Devices.Sensors.dll
+            7ffd683a0000 493c8fe5 Dec 08 04:09:25 2008 C:\Windows\System32\BiWinrt.dll
+            7ffd557a0000 e36b5fd1 Nov 27 12:21:53 2090 C:\Windows\System32\bthprops.cpl
+            7ffd54e80000 3ebaa49f May 08 20:40:31 2003 C:\Windows\System32\InputSwitch.dll
+            7ffd61be0000 9aeba465 May 12 15:45:09 2052 C:\Windows\System32\Windows.Energy.dll
+            7ffd6a650000 63463472 Oct 12 05:28:50 2022 C:\Windows\System32\NetworkIcon.dll
+            7ffd735f0000 b1d8ef71 Jul 20 14:58:25 2064 C:\WINDOWS\SYSTEM32\bluetoothapis.dll
+            7ffd5da40000 292cfa67 Nov 22 13:39:03 1991 C:\Windows\System32\wpnclient.dll
+            7ffd7e830000 84fcf073 Sep 13 19:12:19 2040 C:\WINDOWS\System32\imagehlp.dll
+            7ffd7b790000 3469042c Nov 12 02:19:40 1997 C:\WINDOWS\SYSTEM32\gpapi.dll
+            7ffd5cc80000 59404be8 Jun 13 22:32:40 2017 C:\Windows\System32\RTMediaFrame.dll
+            7ffd5a3c0000 49e7c6e0 Apr 17 02:01:36 2009 C:\Windows\System32\WinLangdb.dll
+            7ffd69df0000 34f38b5e Feb 25 04:09:18 1998 C:\WINDOWS\system32\directmanipulation.dll
+            7ffd74f80000 baba993d Apr 10 05:45:01 2069 C:\Windows\System32\wuceffects.dll
+            7ffd5d7e0000 037b3556 Nov 08 00:57:10 1971 C:\WINDOWS\System32\wscinterop.dll
+            7ffd4d570000 98fe3dc4 May 04 09:39:48 2051 C:\WINDOWS\System32\WSCAPI.dll
+            7ffd722f0000 14b87342 Jan 06 13:34:10 1981 C:\WINDOWS\System32\wscui.cpl
+            7ffd3f120000 0faed322 May 04 09:39:14 1978 C:\WINDOWS\WinSxS\amd64_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.22621.3810_none_57f8d842ce19d879\gdiplus.dll
+            7ffd5d710000 7f757058 Oct 06 02:48:24 2037 C:\WINDOWS\System32\werconcpl.dll
+            7ffd79a50000 9d7309cd Sep 15 17:14:21 2053 C:\WINDOWS\System32\DiagnosticDataSettings.dll
+            7ffd79a60000 ec38e67a Aug 02 21:33:14 2095 C:\WINDOWS\System32\wer.dll
+            7ffd65620000 ed3b7ee9 Feb 15 00:08:25 2096 C:\WINDOWS\System32\framedynos.dll
+            7ffd722d0000 f9ac9f27 Sep 28 00:35:19 2102 C:\WINDOWS\System32\hcproviders.dll
+            7ffd74f20000 ea0e5c2f Jun 08 06:27:27 2094 C:\WINDOWS\SYSTEM32\wevtapi.dll
+            7ffd5d640000 c9cd408b Apr 15 02:23:39 2077 C:\Windows\System32\IEProxy.dll
+            7ffd5a910000 664b2d3c May 20 13:00:12 2024 C:\WINDOWS\SystemApps\MicrosoftWindows.Client.Core_cw5n1h2txyewy\StartMenu.dll
+            7ffd7b070000 52821b05 Nov 12 13:11:49 2013 C:\WINDOWS\SYSTEM32\Secur32.dll
+            7ffd54d80000 bc9f21de Apr 12 18:25:02 2070 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\CoreMessagingXP.dll
+            7ffd3c520000 fa9be0f8 Mar 28 12:07:52 2103 C:\WINDOWS\SYSTEM32\DUI70.dll
+            7ffd6a590000 6f82e2a9 Apr 14 10:11:21 2029 C:\WINDOWS\SYSTEM32\DUser.dll
+            7ffd3b510000 6086da19 Apr 26 17:19:53 2021 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.UI.Xaml.dll
+            7ffd70ee0000 90a1b58a Nov 22 17:27:54 2046 C:\WINDOWS\SYSTEM32\VERSION.dll
+            7ffd43240000 ca8585ca Sep 01 20:56:10 2077 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.Internal.FrameworkUdk.dll
+            7ffd55550000 76bf44d3 Feb 17 10:48:03 2033 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.UI.Windowing.Core.dll
+            7ffd4d890000 c0f7c62a Aug 03 17:26:34 2072 C:\WINDOWS\SYSTEM32\Microsoft.Internal.FrameworkUdk.System.dll
+            7ffd3af10000 4600c19a Mar 21 06:24:42 2007 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.UI.Xaml.Controls.dll
+            7ffd571c0000 036a1343 Oct 26 02:03:15 1971 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.Internal.FrameworkUdk.CBS.dll
+            7ffd556a0000 c2777fa6 May 21 18:56:06 2073 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.Windows.ApplicationModel.Resources.dll
+            7ffd55310000 fcc5833e May 21 10:43:42 2104 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\MRM.dll
+            7ffd3ac20000 c9f93840 May 18 10:48:00 2077 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\dcompi.dll
+            7ffd3ff10000 6595ca40 Jan 03 21:57:36 2024 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\marshal.dll
+            7ffd749b0000 923c8adc Sep 30 09:27:24 2047 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.UI.Composition.OSSupport.dll
+            7ffd3a910000 e4760723 Jun 17 19:38:43 2091 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\dwmcorei.dll
+            7ffd54d00000 37d58807 Sep 07 23:47:51 1999 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.InputStateManager.dll
+            7ffd77be0000 ae2edaf5 Aug 09 01:44:53 2062 C:\WINDOWS\SYSTEM32\D3DCOMPILER_47.dll
+            7ffd3a7b0000 b0e6654a Jan 18 14:40:26 2064 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.UI.Input.dll
+            7ffd3a4c0000 66423b71 May 13 18:10:25 2024 C:\WINDOWS\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\MicrosoftGraphRecentItemsManager.dll
+            7ffd431c0000 c3fa6896 Mar 11 05:24:54 2074 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.UI.Windowing.dll
+            7ffd3a190000 6643e601 May 15 00:30:25 2024 C:\WINDOWS\SystemApps\MicrosoftWindows.Client.FileExp_cw5n1h2txyewy\FileExplorerExtensions.dll
+            7ffd5de80000 fd04b687 Jul 08 09:15:19 2104 C:\Windows\System32\Windows.Management.Workplace.dll
+            7ffd5b090000 42e8cc2c Jul 28 14:14:36 2005 C:\Windows\System32\Windows.Internal.System.UserProfile.dll
+            7ffd73970000 dda5e874 Nov 02 19:54:44 2087 C:\Windows\System32\Windows.Graphics.dll
+            7ffd68120000 6e4c4fc4 Aug 21 20:21:56 2028 C:\WINDOWS\SYSTEM32\PhotoMetadataHandler.dll
+            7ffd68090000 80dc2e94 Jul 05 05:31:32 2038 C:\Windows\System32\dlnashext.dll
+            7ffd55190000 310927f8 Jan 26 20:14:00 1996 C:\WINDOWS\SYSTEM32\searchfolder.dll
+            7ffd3e290000 06bce152 Aug 01 10:29:06 1973 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.DirectManipulation.dll
+            7ffd39e40000 656a4535 Dec 01 21:42:29 2023 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\WinUIEdit.dll
+            7ffd5cb70000 00fd1784 Jul 12 01:23:48 1970 C:\WINDOWS\SYSTEM32\elscore.dll
+            7ffd72ec0000 ccbdd14f Nov 06 21:25:51 2078 C:\WINDOWS\SYSTEM32\USP10.dll
+            7ffd6c020000 5a9dd194 Mar 06 00:24:04 2018 C:\WINDOWS\SYSTEM32\globinputhost.dll
+            7ffd3e210000 aa2029d7 Jun 12 04:56:23 2060 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\wuceffectsi.dll
+            7ffd5fea0000 6250a907 Apr 08 23:28:39 2022 C:\WINDOWS\SYSTEM32\rometadata.dll
+            7ffd55450000 663bf956 May 09 00:14:46 2024 C:\WINDOWS\SystemApps\MicrosoftWindows.Client.Core_cw5n1h2txyewy\SnapLayout.dll
+            7ffd553a0000 664289cc May 13 23:44:44 2024 C:\WINDOWS\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\DesktopSpotlight.dll
+            7ffd42320000 656a42d5 Dec 01 21:32:21 2023 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.UI.Xaml.Internal.dll
+            7ffd73770000 603ac11c Feb 27 23:01:00 2021 C:\Windows\System32\Cabinet.dll
+            7ffd36910000 0b418f86 Dec 26 18:12:38 1975 C:\Windows\System32\ieframe.dll
+            7ffd5ea20000 96375187 Nov 11 02:42:31 2049 C:\WINDOWS\SYSTEM32\msIso.dll
+            7ffd617a0000 a3047bd5 Aug 31 22:40:53 2056 C:\Windows\System32\WorkFoldersShell.dll
+            7ffd61cd0000 d3c92ffd Aug 05 19:46:37 2082 C:\WINDOWS\system32\WINMM.dll
+            7ffd50750000 79e7b225 Oct 23 16:45:57 2034 C:\WINDOWS\SYSTEM32\virtdisk.dll
+            7ffd64bd0000 64632cea May 16 09:12:42 2023 C:\WINDOWS\SYSTEM32\activationmanager.dll
+            7ffd63860000 6df87d34 Jun 19 06:25:24 2028 C:\WINDOWS\SYSTEM32\capauthz.dll
+            7ffd43080000 ce3ce87a Aug 24 12:22:50 2079 C:\WINDOWS\SYSTEM32\pcacli.dll
+            7ffd73010000 0779f4b2 Dec 22 19:30:10 1973 C:\WINDOWS\System32\sfc_os.dll
+            7ffd7bed0000 3c0c4b88 Dec 04 05:05:28 2001 C:\WINDOWS\SYSTEM32\ServicingCommon.dll
+            7ffd721c0000 402df31f Feb 14 11:06:23 2004 C:\WINDOWS\SYSTEM32\storageusage.dll
+            7ffd66d40000 22241612 Feb 25 13:24:50 1988 C:\WINDOWS\system32\themeui.dll
+            7ffd71cb0000 7baf1c5b Oct 04 03:20:27 2035 C:\Windows\System32\Windows.Internal.Graphics.Display.DisplayEnhancementManagement.dll
+            7ffd66ac0000 1295be24 Nov 18 21:03:48 1979 C:\Windows\System32\DesktopSwitcherDataModel.dll
+            7ffd5a5a0000 ca8696ec Sep 02 16:21:32 2077 C:\WINDOWS\SYSTEM32\msftedit.dll
+            7ffd74d70000 d39f516c Jul 05 01:34:04 2082 C:\WINDOWS\System32\UIAnimation.dll
+            7ffd72740000 570b69e0 Apr 11 11:09:52 2016 C:\WINDOWS\system32\IconCodecService.dll
+            7ffd71ea0000 39ee495f Oct 19 03:07:43 2000 C:\Windows\System32\PlayToDevice.dll
+            7ffd723d0000 ce3a0c9c Aug 22 08:20:12 2079 C:\Windows\System32\Windows.Internal.Graphics.Display.DisplayColorManagement.dll
+            7ffd77260000 81a043f1 Nov 30 22:06:57 2038 C:\Windows\System32\taskschd.dll
+            7ffd65160000 857a4205 Dec 17 19:33:41 2040 C:\WINDOWS\system32\wpdshext.dll
+            7ffd66ed0000 449b471e Jun 23 03:42:54 2006 C:\Windows\System32\EhStorAPI.dll
+    SubSystemData:     00007ffd7464b6e0
+    ProcessHeap:       0000000000ff0000
+    ProcessParameters: 0000000000ff68e0
+    CurrentDirectory:  'C:\WINDOWS\system32\'
+    WindowTitle:  'Microsoft.Windows.Explorer'
+    ImageFile:    'C:\Windows\explorer.exe'
+    CommandLine:  'C:\Windows\explorer.exe'
+    DllPath:      '< Name not readable >'
+    Environment:  0000000003c859c0
+        =::=::\0: kd> !peb
+PEB NULL...
+0: kd> g
+Break instruction exception - code 80000003 (first chance)
+*******************************************************************************
+*                                                                             *
+*   You are seeing this message because you pressed either                    *
+*       CTRL+C (if you run console kernel debugger) or,                       *
+*       CTRL+BREAK (if you run GUI kernel debugger),                          *
+*   on your debugger machine's keyboard.                                      *
+*                                                                             *
+*                   THIS IS NOT A BUG OR A SYSTEM CRASH                       *
+*                                                                             *
+* If you did not intend to break into the debugger, press the "g" key, then   *
+* press the "Enter" key now.  This message might immediately reappear.  If it *
+* does, press "g" and "Enter" again.                                          *
+*                                                                             *
+*******************************************************************************
+nt!DbgBreakPointWithStatus:
+fffff803`05820280 cc              int     3
+0: kd> !process 0 0 explorer.exe
+PROCESS ffff80083ef52080
+    SessionId: 1  Cid: 199c    Peb: 00759000  ParentCid: 1928
+    DirBase: 17b81c000  ObjectTable: 00000000  HandleCount:   0.
+    Image: explorer.exe
+
+PROCESS ffff8008415510c0
+    SessionId: 1  Cid: 0260    Peb: 00c20000  ParentCid: 0de4
+    DirBase: 109909000  ObjectTable: ffffac8abb9c7780  HandleCount: 4981.
+    Image: explorer.exe
+
+0: kd> .process /r /p ffff8008415510c0
+Implicit process is now ffff8008`415510c0
+.cache forcedecodeuser done
+Loading User Symbols
+................................................................
+................................................................
+................................................................
+................................................................
+................................................................
+.....................
+
+************* Symbol Loading Error Summary **************
+Module name            Error
+SharedUserData         No error - symbol load deferred
+				Symbol loading has been deferred because this symbol is not needed
+				at this time. Use reload /f to force load symbols.
+
+0: kd> !peb
+PEB at 0000000000c20000
+    InheritedAddressSpace:    No
+    ReadImageFileExecOptions: No
+    BeingDebugged:            Yes
+    ImageBaseAddress:         00007ff68e7a0000
+    NtGlobalFlag:             0
+    NtGlobalFlag2:            0
+    Ldr                       00007ffd7f0b6440
+    Ldr.Initialized:          Yes
+    Ldr.InInitializationOrderModuleList: 0000000000ff23e0 . 00000000201dd960
+    Ldr.InLoadOrderModuleList:           0000000000ff2560 . 00000000201dd940
+    Ldr.InMemoryOrderModuleList:         0000000000ff2570 . 00000000201dd950
+                    Base TimeStamp                     Module
+            7ff68e7a0000 5b4afbdf Jul 15 09:46:39 2018 C:\Windows\explorer.exe
+            7ffd7ef30000 67ca8829 Mar 07 06:46:17 2025 C:\WINDOWS\SYSTEM32\ntdll.dll
+            7ffd7e760000 36466623 Nov 09 04:48:51 1998 C:\WINDOWS\System32\KERNEL32.DLL
+            7ffd7c260000 10210ca8 Jul 30 01:03:04 1978 C:\WINDOWS\System32\KERNELBASE.dll
+            7ffd7ca70000 8e0806c9 Jul 05 20:04:57 2045 C:\WINDOWS\System32\msvcp_win.dll
+            7ffd7c610000 10c46e71 Nov 30 22:19:45 1978 C:\WINDOWS\System32\ucrtbase.dll
+            7ffd7d170000 eadd58d3 Nov 12 05:32:19 2094 C:\WINDOWS\System32\combase.dll
+            7ffd61b00000 ab114f9d Dec 12 01:53:49 2060 C:\WINDOWS\SYSTEM32\AEPIC.dll
+            7ffd7cc70000 045b6c12 Apr 26 03:38:26 1972 C:\WINDOWS\System32\RPCRT4.dll
+            7ffd615a0000 95f2f666 Sep 20 07:19:34 2049 C:\WINDOWS\SYSTEM32\TWINAPI.dll
+            7ffd7e580000 657b2709 Dec 14 17:02:17 2023 C:\WINDOWS\System32\msvcrt.dll
+            7ffd7e480000 b0695f14 Oct 15 19:40:36 2063 C:\WINDOWS\System32\OLEAUT32.dll
+            7ffd7ce90000 9e92f56b Apr 22 02:40:11 2054 C:\WINDOWS\System32\sechost.dll
+            7ffd7cf90000 a5301d83 Oct 27 09:38:43 2057 C:\WINDOWS\System32\shcore.dll
+            7ffd7e850000 dcab4278 Apr 26 17:59:52 2087 C:\WINDOWS\System32\advapi32.dll
+            7ffd7cc40000 5a31de46 Dec 14 03:13:26 2017 C:\WINDOWS\System32\bcrypt.dll
+            7ffd7b800000 29678987 Jan 05 23:41:11 1992 C:\WINDOWS\SYSTEM32\USERENV.dll
+            7ffd7e6b0000 672b2c78 Nov 06 09:44:40 2024 C:\WINDOWS\System32\shlwapi.dll
+            7ffd7c120000 eb1e08e2 Dec 31 07:08:34 2094 C:\WINDOWS\SYSTEM32\powrprof.dll
+            7ffd7d740000 785507b7 Dec 22 05:27:35 2033 C:\WINDOWS\System32\user32.dll
+            7ffd7c730000 331718eb Feb 28 18:42:03 1997 C:\WINDOWS\System32\win32u.dll
+            7ffd7d500000 533dc7aa Apr 03 22:42:18 2014 C:\WINDOWS\System32\GDI32.dll
+            7ffd7c950000 05ca1d5d Jan 29 06:04:29 1973 C:\WINDOWS\System32\gdi32full.dll
+            7ffd7dc20000 80bcc9a1 Jun 11 10:00:33 2038 C:\WINDOWS\System32\SHELL32.dll
+            7ffd7a1b0000 33b965a2 Jul 01 22:16:34 1997 C:\WINDOWS\SYSTEM32\windows.storage.dll
+            7ffd79900000 6d095044 Dec 20 19:21:56 2027 C:\WINDOWS\SYSTEM32\dxgi.dll
+            7ffd77700000 e12a27fd Sep 15 17:25:49 2089 C:\WINDOWS\SYSTEM32\PROPSYS.dll
+            7ffd7b290000 8aca7e42 Oct 15 14:53:22 2043 C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+            7ffd7b050000 1f99e550 Oct 20 10:03:28 1986 C:\WINDOWS\SYSTEM32\WTSAPI32.dll
+            7ffd70400000 e8e2e86d Oct 24 03:05:49 2093 C:\WINDOWS\SYSTEM32\WININET.dll
+            7ffd797e0000 a5efeec5 Mar 21 20:34:29 2058 C:\WINDOWS\SYSTEM32\UxTheme.dll
+            7ffd79a10000 cf3c44bb Mar 05 04:04:27 2080 C:\WINDOWS\SYSTEM32\dwmapi.dll
+            7ffd7b4f0000 7bf67163 Nov 27 04:54:11 2035 C:\WINDOWS\SYSTEM32\SspiCli.dll
+            7ffd743f0000 af5b3dbf Mar 24 21:06:23 2063 C:\WINDOWS\SYSTEM32\twinapi.appcore.dll
+            7ffd7a070000 6ae12fbc Oct 28 00:11:56 2026 C:\WINDOWS\SYSTEM32\wintypes.dll
+            7ffd7c760000 ee775c51 Oct 11 15:17:05 2096 C:\WINDOWS\System32\bcryptPrimitives.dll
+            7ffd7b2b0000 f264e279 Nov 13 07:17:29 2098 C:\WINDOWS\SYSTEM32\ntmarta.dll
+            7ffd7c100000 84929b4c Jun 25 03:28:44 2040 C:\WINDOWS\SYSTEM32\UMPDC.dll
+            7ffd7e710000 25b6f46e Jan 19 12:05:18 1990 C:\WINDOWS\System32\IMM32.DLL
+            7ffd798c0000 ed36530a Feb 11 01:59:54 2096 C:\WINDOWS\SYSTEM32\dxcore.dll
+            7ffd610a0000 68d74f69 Sep 27 04:43:53 2025 C:\WINDOWS\SYSTEM32\NInput.dll
+            7ffd7e910000 1bd2fc8f Oct 17 00:00:47 1984 C:\WINDOWS\System32\MSCTF.dll
+            7ffd7d530000 4dadec65 Apr 19 22:11:17 2011 C:\WINDOWS\System32\ole32.dll
+            7ffd60e00000 19bdab14 Sep 08 11:15:00 1983 C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.3672_none_2713b9d173822955\comctl32.dll
+            7ffd7d910000 8bfd4b9e Jun 04 08:03:10 2044 C:\WINDOWS\System32\clbcatq.dll
+            7ffd60c00000 2ade2e61 Oct 16 04:52:17 1992 C:\Windows\System32\appresolver.dll
+            7ffd7c190000 3f8e9009 Oct 16 14:33:13 2003 C:\WINDOWS\SYSTEM32\profapi.dll
+            7ffd73be0000 5a3ee367 Dec 24 00:14:47 2017 C:\Windows\System32\OneCoreUAPCommonProxyStub.dll
+            7ffd7be20000 0b33d799 Dec 16 08:28:25 1975 C:\WINDOWS\SYSTEM32\CFGMGR32.dll
+            7ffd60450000 a36b0516 Nov 17 16:17:42 2056 C:\Windows\System32\StartTileData.dll
+            7ffd7c7e0000 3ec72cae May 18 08:48:14 2003 C:\WINDOWS\System32\CRYPT32.dll
+            7ffd7ad10000 6e557212 Aug 28 18:38:42 2028 C:\Windows\System32\IPHLPAPI.DLL
+            7ffd6c210000 8b666879 Feb 10 20:14:01 2044 C:\Windows\System32\MrmCoreR.dll
+            7ffd77310000 ceb3ac22 Nov 22 13:25:06 2079 C:\WINDOWS\SYSTEM32\usermgrcli.dll
+            7ffd6c090000 b54a684c May 20 05:41:00 2066 C:\Windows\System32\Windows.UI.dll
+            7ffd67000000 f8882e86 Feb 18 03:52:54 2102 C:\Windows\System32\Windows.StateRepositoryPS.dll
+            7ffd6cbb0000 3cc4b8aa Apr 23 03:28:10 2002 C:\WINDOWS\SYSTEM32\languageoverlayutil.dll
+            7ffd63210000 51b91d65 Jun 13 03:16:21 2013 C:\Windows\System32\Windows.ApplicationModel.dll
+            7ffd75d20000 da387fb5 Jan 06 07:09:57 2086 C:\Windows\System32\AppXDeploymentClient.dll
+            7ffd6c400000 e86ca3ba Jul 26 10:05:14 2093 C:\Windows\System32\bcp47mrm.dll
+            7ffd72140000 66e109b1 Sep 11 05:08:33 2024 C:\Windows\System32\usermgrproxy.dll
+            7ffd69340000 6f544e35 Mar 10 01:13:41 2029 C:\Windows\System32\OneCoreCommonProxyStub.dll
+            7ffd67590000 fa311e5c Jan 06 11:37:16 2103 C:\Windows\System32\Windows.CloudStore.dll
+            7ffd680f0000 040f741d Feb 28 11:40:29 1972 C:\WINDOWS\System32\IDStore.dll
+            7ffd77800000 69d7c43c Apr 09 17:22:36 2026 C:\WINDOWS\System32\SAMLIB.dll
+            7ffd601f0000 9166749b Apr 21 00:07:23 2047 C:\Windows\System32\AppExtension.dll
+            7ffd719f0000 1b94ab56 Aug 30 17:33:42 1984 C:\Windows\System32\Windows.StateRepositoryClient.dll
+            7ffd62eb0000 67ea07c3 Mar 31 05:10:59 2025 C:\WINDOWS\System32\wlidprov.dll
+            7ffd77ad0000 eab0c51f Oct 09 11:02:23 2094 C:\WINDOWS\SYSTEM32\policymanager.dll
+            7ffd779f0000 3bcb53a2 Oct 15 23:22:42 2001 C:\WINDOWS\SYSTEM32\msvcp110_win.dll
+            7ffd72350000 9d10db80 Jul 03 05:54:40 2053 C:\Windows\System32\Bcp47Langs.dll
+            7ffd6d8b0000 600683cb Jan 19 08:01:31 2021 C:\Windows\System32\SystemSettings.DataModel.dll
+            7ffd696d0000 3c64d16f Feb 09 08:36:15 2002 C:\WINDOWS\system32\windowsudk.shellcommon.dll
+            7ffd776c0000 5f16f639 Jul 21 16:05:45 2020 C:\WINDOWS\system32\XmlLite.dll
+            7ffd71b50000 3493b545 Dec 14 11:30:29 1997 C:\WINDOWS\SYSTEM32\windows.staterepositorycore.dll
+            7ffd6cca0000 0bc7e2b4 Apr 06 16:31:16 1976 C:\WINDOWS\System32\StructuredQuery.dll
+            7ffd71b70000 f51d7a90 Apr 25 17:24:00 2100 C:\Windows\System32\Windows.System.Launcher.dll
+            7ffd66930000 6ee6ca05 Dec 16 23:32:37 2028 C:\WINDOWS\system32\Windows.Storage.Search.dll
+            7ffd668a0000 0930c67b Nov 20 15:58:03 1974 C:\WINDOWS\SYSTEM32\edputil.dll
+            7ffd667d0000 bb1f093b Jun 25 10:09:31 2069 C:\Windows\System32\Windows.Web.dll
+            7ffd630c0000 c4b87261 Aug 02 09:57:21 2074 C:\Windows\System32\Windows.Security.Authentication.Web.Core.dll
+            7ffd6f130000 3e9e835d Apr 17 12:35:09 2003 C:\Windows\System32\iertutil.dll
+            7ffd5ece0000 27f0973b Mar 27 13:59:39 1991 C:\Windows\System32\Taskbar.dll
+            7ffd7bfd0000 1911ca7e May 01 02:19:10 1983 C:\WINDOWS\SYSTEM32\winsta.dll
+            7ffd6f3f0000 7d529f5c Aug 17 08:19:08 2036 C:\WINDOWS\SYSTEM32\urlmon.dll
+            7ffd7ab30000 af5bc381 Mar 25 07:37:05 2063 C:\Windows\System32\SLC.dll
+            7ffd78920000 3f5bda39 Sep 08 03:24:09 2003 C:\Windows\System32\DWrite.dll
+            7ffd78330000 25f2bd72 Mar 05 20:26:42 1990 C:\Windows\System32\d2d1.dll
+            7ffd70e00000 cb291c48 Jan 03 21:57:44 2078 C:\Windows\System32\srvcli.dll
+            7ffd7ad00000 eeaa3672 Nov 19 04:01:06 2096 C:\Windows\System32\netutils.dll
+            7ffd67b00000 ed7a014f Apr 02 11:05:19 2096 C:\WINDOWS\SYSTEM32\SndVolSSO.DLL
+            7ffd73650000 aed02870 Dec 09 09:10:24 2062 C:\WINDOWS\SYSTEM32\MMDevAPI.DLL
+            7ffd7bec0000 c28736a9 Jun 02 17:00:57 2073 C:\WINDOWS\System32\DPAPI.dll
+            7ffd7b980000 f6072bfa Oct 19 23:39:06 2100 C:\WINDOWS\System32\CRYPTBASE.dll
+            7ffd7be70000 53f5e575 Aug 21 14:26:29 2014 C:\WINDOWS\SYSTEM32\DEVOBJ.dll
+            7ffd56210000 240a8547 Feb 28 12:40:55 1989 C:\WINDOWS\SYSTEM32\rdpendp.dll
+            7ffd5f670000 9300bf50 Feb 26 04:15:28 2048 C:\Windows\System32\Windows.Web.Http.dll
+            7ffd7e630000 e911ea68 Nov 28 17:50:48 2093 C:\WINDOWS\System32\WS2_32.dll
+            7ffd61310000 ad049a8a Dec 25 19:14:34 2061 C:\Windows\System32\OLEACC.dll
+            7ffd6c000000 b812c805 Nov 11 13:03:17 2067 C:\WINDOWS\SYSTEM32\ondemandconnroutehelper.dll
+            7ffd79220000 41404c38 Sep 09 14:27:36 2004 C:\WINDOWS\system32\CoreMessaging.dll
+            7ffd7ac20000 06b292b2 Jul 24 14:50:58 1973 C:\WINDOWS\SYSTEM32\firewallapi.dll
+            7ffd7aba0000 4bd2b8af Apr 24 11:23:59 2010 C:\WINDOWS\SYSTEM32\fwbase.dll
+            7ffd7b700000 22162918 Feb 14 23:54:16 1988 C:\WINDOWS\system32\mswsock.dll
+            7ffd77fd0000 caf4ab3f Nov 25 03:17:35 2077 C:\WINDOWS\SYSTEM32\WINNSI.DLL
+            7ffd7e750000 5a7e5602 Feb 10 03:16:34 2018 C:\WINDOWS\System32\NSI.dll
+            7ffd6ac10000 8bc16722 Apr 19 21:44:34 2044 C:\Windows\System32\Windows.UI.Immersive.dll
+            7ffd78ba0000 5ce4d747 May 22 06:59:51 2019 C:\Windows\System32\dcomp.dll
+            7ffd61260000 c806b7cf May 05 07:51:11 2076 C:\WINDOWS\system32\dataexchange.dll
+            7ffd6a690000 cd5f7ea9 Mar 09 12:40:25 2079 C:\WINDOWS\SYSTEM32\TextShaping.dll
+            7ffd5f3c0000 a64896b6 May 28 03:30:30 2058 C:\WINDOWS\system32\explorerframe.dll
+            7ffd64a10000 21aca997 Nov 26 23:22:15 1987 C:\Windows\System32\SettingsHandlers_DesktopTaskbar.dll
+            7ffd79630000 c2ae0672 Jul 02 03:33:38 2073 C:\WINDOWS\system32\windowscodecs.dll
+            7ffd61d60000 660e8d0e Apr 04 13:20:46 2024 C:\WINDOWS\system32\twinui.pcshell.dll
+            7ffd6c330000 6b36c85d Dec 31 22:25:49 2026 C:\WINDOWS\system32\wincorlib.DLL
+            7ffd5f8a0000 05263116 Sep 26 22:56:54 1972 C:\Windows\System32\windows.immersiveshell.serviceprovider.dll
+            7ffd67bb0000 1cab3d70 Mar 29 23:47:12 1985 C:\Windows\System32\deviceassociation.dll
+            7ffd75130000 dbf79ba2 Dec 11 10:32:18 2086 C:\WINDOWS\SYSTEM32\WINHTTP.dll
+            7ffd63790000 28a685f1 Aug 12 14:58:25 1991 C:\WINDOWS\System32\twinui.appcore.dll
+            7ffd567a0000 47a28cbf Feb 01 04:06:39 2008 C:\WINDOWS\system32\twinui.dll
+            7ffd7b9c0000 03d0f351 Jan 12 01:50:25 1972 C:\WINDOWS\System32\MSASN1.dll
+            7ffd7cb10000 44a1863c Jun 27 21:25:48 2006 C:\WINDOWS\System32\WINTRUST.dll
+            7ffd7b960000 ebaf0d75 Apr 20 08:06:45 2095 C:\WINDOWS\SYSTEM32\CRYPTSP.dll
+            7ffd7b1f0000 706ed8e9 Oct 10 09:44:41 2029 C:\WINDOWS\system32\rsaenh.dll
+            7ffd73110000 e148209c Oct 08 11:02:20 2089 C:\WINDOWS\SYSTEM32\textinputframework.dll
+            7ffd7ad40000 08d128ba Sep 09 04:19:38 1974 C:\WINDOWS\SYSTEM32\DNSAPI.dll
+            7ffd74e70000 9a6e599a Feb 07 13:52:42 2052 C:\Windows\System32\rasadhlp.dll
+            7ffd74360000 242c3586 Mar 26 01:57:42 1989 C:\WINDOWS\System32\fwpuclnt.dll
+            7ffd7b0f0000 c65f24be Jun 19 00:54:54 2075 C:\WINDOWS\system32\schannel.DLL
+            7ffd6c3d0000 e3d8f7b5 Feb 18 15:27:01 2091 C:\WINDOWS\SYSTEM32\cldapi.dll
+            7ffd72050000 15f816c1 Sep 06 01:24:49 1981 C:\WINDOWS\SYSTEM32\FLTLIB.DLL
+            7ffd7bb20000 d9271a72 Jun 12 23:09:06 2085 C:\WINDOWS\SYSTEM32\ncrypt.dll
+            7ffd7bae0000 6acdc5bd Oct 13 07:46:37 2026 C:\WINDOWS\SYSTEM32\NTASN1.dll
+            7ffd666d0000 162f7459 Oct 18 01:18:49 1981 C:\WINDOWS\system32\ncryptsslp.dll
+            7ffd65950000 7daac69f Oct 23 05:06:07 2036 C:\Windows\System32\cryptnet.dll
+            7ffd6ce50000 d38365d2 Jun 13 21:17:38 2082 C:\Windows\System32\sppc.dll
+            7ffd60140000 e847a942 Jun 28 08:54:58 2093 C:\WINDOWS\system32\mlang.dll
+            7ffd5ec20000 0139793b Aug 26 20:36:43 1970 C:\WINDOWS\System32\ApplicationFrame.dll
+            7ffd759b0000 f7ac7b07 Sep 04 13:20:39 2101 C:\Windows\System32\windowmanagementapi.dll
+            7ffd5eb70000 9042b6b5 Sep 11 17:07:33 2046 C:\WINDOWS\system32\Windows.Internal.ShellCommon.dll
+            7ffd61aa0000 1f25445e Jul 23 22:53:50 1986 C:\WINDOWS\system32\activationclient.dll
+            7ffd79d20000 ac4b70cc Aug 07 09:27:08 2061 C:\WINDOWS\SYSTEM32\RMCLIENT.dll
+            7ffd5e6b0000 9f6502ef Sep 28 10:33:51 2054 C:\WINDOWS\SYSTEM32\ntshrui.dll
+            7ffd65570000 4f690014 Mar 20 23:09:24 2012 C:\WINDOWS\SYSTEM32\cscapi.dll
+            7ffd5e4d0000 8fba3e38 May 31 04:45:12 2046 C:\Windows\System32\thumbcache.dll
+            7ffd5ea70000 2f407c4f Feb 14 10:47:59 1995 C:\Windows\System32\HolographicExtensions.dll
+            7ffd5f830000 afb79fb8 Jun 02 23:52:56 2063 C:\Windows\System32\AboveLockAppHost.dll
+            7ffd61bc0000 3c3a82f2 Jan 08 06:26:10 2002 C:\WINDOWS\SYSTEM32\LINKINFO.dll
+            7ffd5db90000 29c61e34 Mar 17 17:28:36 1992 C:\Windows\System32\Windows.FileExplorer.Common.dll
+            7ffd795e0000 83c8805b Jan 23 19:15:55 2040 C:\WINDOWS\SYSTEM32\pfclient.dll
+            7ffd717e0000 3da8a9e3 Oct 13 01:01:55 2002 C:\Windows\System32\InputHost.dll
+            7ffd694b0000 a79daada Feb 10 19:39:22 2059 C:\Windows\System32\Windows.UI.Core.TextInput.dll
+            7ffd65680000 91eb5952 Jul 30 19:22:26 2047 C:\Windows\System32\Windows.Shell.BlueLightReduction.dll
+            7ffd5e5a0000 10ccce25 Dec 07 06:46:13 1978 C:\Windows\System32\Windows.Internal.Signals.dll
+            7ffd76860000 a629a812 May 04 16:24:18 2058 C:\WINDOWS\SYSTEM32\directxdatabasehelper.dll
+            7ffd5df80000 c97de36e Feb 13 20:37:18 2077 C:\Windows\System32\TileDataRepository.dll
+            7ffd71010000 a0ededa9 Jul 23 11:23:53 2055 C:\Windows\System32\Windows.StateRepository.dll
+            7ffd70f50000 cde2aa8c Jun 17 01:34:36 2079 C:\Windows\System32\StateRepository.Core.dll
+            7ffd73a20000 d4ee5f9a Mar 16 04:03:54 2083 C:\Windows\System32\mscms.dll
+            7ffd5d4e0000 905ac6c3 Sep 29 23:10:27 2046 C:\WINDOWS\system32\Windows.UI.FileExplorer.dll
+            7ffd6a560000 c4908cb8 Jul 03 03:39:04 2074 C:\WINDOWS\system32\WinUICohabitation.dll
+            7ffd68de0000 8c8eb99e Sep 22 15:31:10 2044 C:\WINDOWS\SYSTEM32\MFPlat.DLL
+            7ffd68da0000 ee22584f Aug 08 03:37:19 2096 C:\WINDOWS\SYSTEM32\RTWorkQ.DLL
+            7ffd79d60000 162c5c4d Oct 15 16:59:25 1981 C:\WINDOWS\SYSTEM32\resourcepolicyclient.dll
+            7ffd73b60000 872603a3 Nov 07 06:37:39 2041 C:\Windows\System32\ActXPrxy.dll
+            7ffd64390000 cb39d752 Jan 16 14:32:02 2078 C:\WINDOWS\SYSTEM32\cdp.dll
+            7ffd67c00000 ab3f7f82 Jan 16 02:42:26 2061 C:\WINDOWS\SYSTEM32\WINBRAND.dll
+            7ffd5bfd0000 6d31c4aa Jan 20 11:49:14 2028 C:\WINDOWS\SYSTEM32\UIAutomationCore.DLL
+            7ffd5d120000 e48c46a4 Jul 04 16:39:32 2091 C:\Windows\System32\Windows.Devices.Enumeration.dll
+            7ffd7ba30000 5d9479d7 Oct 02 12:20:07 2019 C:\WINDOWS\SYSTEM32\Wldp.dll
+            7ffd74750000 ba9aa1a6 Mar 16 22:48:22 2069 C:\Windows\System32\Windows.Gaming.Input.dll
+            7ffd5d0b0000 4d801308 Mar 16 02:31:52 2011 C:\WINDOWS\System32\MSWB7.dll
+            7ffd5f340000 ecb00f45 Nov 01 05:47:01 2095 C:\Windows\System32\Windows.Internal.UI.Shell.WindowTabManager.dll
+            7ffd79510000 114ea630 Mar 15 18:30:24 1979 C:\WINDOWS\SYSTEM32\apphelp.dll
+            7ffd61ad0000 353a423c Apr 19 20:28:12 1998 C:\Windows\System32\DevDispItemProvider.dll
+            7ffd5cfb0000 50052909 Jul 17 10:57:45 2012 C:\Windows\System32\EhStorShell.dll
+            7ffd7ea70000 a28394ab May 26 04:04:27 2056 C:\WINDOWS\System32\SETUPAPI.dll
+            7ffd5ced0000 81111dbf Aug 14 09:09:51 2038 C:\WINDOWS\System32\cscui.dll
+            7ffd5d3f0000 7012b1b2 Aug 01 12:08:50 2029 C:\Windows\System32\NotificationControllerPS.dll
+            7ffd7d0f0000 fc603bee Mar 05 14:00:30 2104 C:\WINDOWS\System32\coml2.dll
+            7ffd5b070000 2abfceda Sep 23 03:56:42 1992 C:\WINDOWS\system32\NetworkExplorer.dll
+            7ffd70ec0000 63a31d27 Dec 21 15:50:15 2022 C:\WINDOWS\SYSTEM32\MPR.dll
+            7ffd597c0000 88fc8be4 Oct 30 04:24:20 2042 C:\WINDOWS\system32\mssprxy.dll
+            7ffd59a20000 e1037ad5 Aug 17 09:20:53 2089 C:\WINDOWS\System32\p9np.dll
+            7ffd66270000 a18ed760 Nov 22 11:43:44 2055 C:\WINDOWS\System32\drprov.dll
+            7ffd599f0000 528cf4bf Nov 20 18:43:27 2013 C:\WINDOWS\System32\ntlanman.dll
+            7ffd5b050000 4a72bda2 Jul 31 11:47:14 2009 C:\WINDOWS\System32\davclnt.dll
+            7ffd67230000 e807a80f May 10 19:44:47 2093 C:\Windows\System32\Windows.Networking.Connectivity.dll
+            7ffd5cff0000 d4cdc8a2 Feb 19 10:47:14 2083 C:\Windows\System32\PCShellCommonProxyStub.dll
+            7ffd75e70000 1cc09fb6 Apr 15 06:04:06 1985 C:\WINDOWS\SYSTEM32\CoreUIComponents.dll
+            7ffd5ce70000 d31a7d1c Mar 26 06:29:00 2082 C:\Windows\System32\Windows.UI.Accessibility.dll
+            7ffd63540000 e218feb0 Mar 15 20:21:20 2090 C:\Windows\System32\SwitcherDataModel.dll
+            7ffd5cd30000 3d92585e Sep 26 02:44:14 2002 C:\Windows\System32\ShellCommonCommonProxyStub.dll
+            7ffd62fb0000 143b2fc2 Oct 03 14:12:50 1980 C:\WINDOWS\SYSTEM32\daxexec.dll
+            7ffd62f60000 abffa634 Jun 10 21:42:44 2061 C:\WINDOWS\System32\container.dll
+            7ffd6a8e0000 122f671b Sep 02 07:01:15 1979 C:\Windows\System32\Windows.Globalization.dll
+            7ffd77860000 a57931e9 Dec 21 19:01:13 2057 C:\WINDOWS\SYSTEM32\dsreg.dll
+            7ffd5d1f0000 c2f7baf0 Aug 27 01:19:12 2073 C:\WINDOWS\SYSTEM32\cryptngc.dll
+            7ffd5e200000 c393ccb9 Dec 23 09:28:41 2073 C:\WINDOWS\SYSTEM32\dmEnrollEngine.DLL
+            7ffd61d20000 57951709 Jul 24 21:29:13 2016 C:\WINDOWS\SYSTEM32\cflapi.dll
+            7ffd5fee0000 615a9216 Oct 04 07:33:10 2021 C:\WINDOWS\SystemApps\MicrosoftWindows.Client.FileExp_cw5n1h2txyewy\VCRUNTIME140_1_APP.dll
+            7ffd5ca60000 615a9216 Oct 04 07:33:10 2021 C:\WINDOWS\SystemApps\MicrosoftWindows.Client.FileExp_cw5n1h2txyewy\MSVCP140_APP.dll
+            7ffd5ca40000 615a9216 Oct 04 07:33:10 2021 C:\WINDOWS\SystemApps\MicrosoftWindows.Client.FileExp_cw5n1h2txyewy\VCRUNTIME140_APP.dll
+            7ffd74f00000 592e4f3d May 31 07:06:05 2017 C:\WINDOWS\SYSTEM32\WKSCLI.DLL
+            7ffd74cd0000 381afe8b Oct 30 16:19:55 1999 C:\WINDOWS\System32\npmproxy.dll
+            7ffd70ef0000 877a136d Jan 10 00:55:25 2042 C:\Windows\System32\samcli.dll
+            7ffd5cb10000 ab0a8173 Dec 06 22:00:35 2060 C:\WINDOWS\system32\stobject.dll
+            7ffd5f810000 f1d12b92 Jul 24 07:13:54 2098 C:\WINDOWS\system32\BatMeter.dll
+            7ffd7c040000 7afbeca6 May 21 05:21:10 2035 C:\WINDOWS\SYSTEM32\sxs.dll
+            7ffd5e1e0000 4c70694d Aug 22 02:03:25 2010 C:\WINDOWS\System32\Windows.UI.Shell.dll
+            7ffd76f70000 54be883d Jan 20 17:54:21 2015 C:\WINDOWS\system32\WMICLNT.dll
+            7ffd5d270000 6f770508 Apr 05 10:10:48 2029 C:\WINDOWS\system32\prnfldr.dll
+            7ffd73800000 af4c3eac Mar 13 12:06:20 2063 C:\WINDOWS\system32\es.dll
+            7ffd6ad90000 c8679348 Jul 17 19:05:12 2076 C:\Windows\System32\Windows.UI.Xaml.dll
+            7ffd5a400000 a4c67585 Aug 08 06:13:57 2057 C:\Windows\ShellComponents\WindowsInternal.ComposableShell.DesktopHosting.dll
+            7ffd442b0000 a55356be Nov 23 01:52:14 2057 C:\Windows\ShellComponents\WindowsInternal.ComposableShell.Experiences.Switcher.dll
+            7ffd5a250000 95fc71ff Sep 27 11:57:19 2049 C:\Windows\ShellExperiences\TileControl.dll
+            7ffd44060000 6ea13e12 Oct 25 06:29:06 2028 C:\Windows\ShellComponents\TaskFlowUI.dll
+            7ffd5ce40000 7caf3033 Apr 15 09:05:23 2036 C:\Windows\ShellComponents\WindowsInternal.ShellUI.dll
+            7ffd5b490000 61f71a0d Jan 31 00:06:53 2022 C:\WINDOWS\SystemApps\Microsoft.UI.Xaml.CBS_8wekyb3d8bbwe\Microsoft.UI.Xaml.dll
+            7ffd56fc0000 73befd62 Jul 15 17:42:26 2031 C:\WINDOWS\system32\dxp.dll
+            7ffd56590000 76d7b500 Mar 07 23:41:04 2033 C:\WINDOWS\SYSTEM32\windows.media.devices.dll
+            7ffd56f50000 9cbdde62 May 01 07:08:50 2053 C:\WINDOWS\System32\Actioncenter.dll
+            7ffd65bc0000 6edb1128 Dec 08 02:08:56 2028 C:\WINDOWS\SYSTEM32\atlthunk.dll
+            7ffd5d4c0000 e93377b6 Dec 24 04:38:30 2093 C:\WINDOWS\system32\Syncreg.dll
+            7ffd63d80000 7aa247c6 Mar 14 04:25:58 2035 C:\Windows\System32\UiaManager.dll
+            7ffd63310000 4488416c Jun 08 17:25:32 2006 C:\Windows\System32\AudioSes.dll
+            7ffd780d0000 4ac6f2bf Oct 03 08:44:15 2009 C:\WINDOWS\SYSTEM32\d3d11.dll
+            7ffd75270000 fc469810 Feb 15 03:14:40 2104 C:\WINDOWS\SYSTEM32\d3d10warp.dll
+            7ffd5cd10000 4f29d01b Feb 02 00:51:55 2012 C:\Windows\System32\dusmapi.dll
+            7ffd5cc00000 ccb82443 Nov 02 14:06:11 2078 C:\WINDOWS\system32\wpdshserviceobj.dll
+            7ffd69d70000 12138395 Aug 12 03:19:17 1979 C:\Windows\System32\PortableDeviceTypes.dll
+            7ffd75c60000 82e9e1e7 Aug 07 23:36:39 2039 C:\Windows\System32\PortableDeviceApi.dll
+            7ffd5c9d0000 a82656ba May 25 12:40:58 2059 C:\WINDOWS\System32\cscobj.dll
+            7ffd56750000 2b1907aa Nov 29 19:10:50 1992 C:\WINDOWS\System32\srchadmin.dll
+            7ffd69e90000 80623448 Apr 03 16:59:20 2038 C:\WINDOWS\SYSTEM32\Windows.UI.Xaml.Controls.dll
+            7ffd43810000 6643f8fa May 15 01:51:22 2024 C:\WINDOWS\SystemApps\MicrosoftWindows.Client.Core_cw5n1h2txyewy\Taskbar.View.dll
+            7ffd566d0000 b2cae9b6 Jan 20 03:02:30 2065 C:\WINDOWS\SYSTEM32\MFSENSORGROUP.dll
+            7ffd56650000 b6a1e784 Feb 04 17:51:16 2067 C:\Windows\System32\shdocvw.dll
+            7ffd55b00000 992619a5 Jun 03 15:16:21 2051 C:\WINDOWS\System32\SyncCenter.dll
+            7ffd5a490000 ab7f65e2 Mar 05 13:58:10 2061 C:\Windows\System32\windows.internal.shell.broker.dll
+            7ffd55970000 3f7d5fd2 Oct 03 13:38:58 2003 C:\Windows\System32\imapi2.dll
+            7ffd435e0000 660ed1b0 Apr 04 18:13:36 2024 C:\Program Files (x86)\Common Files\Microsoft Shared\MSEnv\VSFileHandler_64.dll
+            7ffd433d0000 f717cabc May 14 18:33:00 2101 C:\WINDOWS\System32\pnidui.dll
+            7ffd77330000 99bdcf59 Sep 26 17:03:53 2051 C:\WINDOWS\System32\netprofm.dll
+            7ffd69c40000 4ae3255c Oct 24 18:03:40 2009 C:\Windows\System32\NetworkUXBroker.dll
+            7ffd750f0000 14916bb9 Dec 07 23:03:37 1980 C:\Windows\System32\dhcpcsvc.DLL
+            7ffd75110000 b9b8c33f Sep 26 15:59:27 2068 C:\Windows\System32\dhcpcsvc6.DLL
+            7ffd69630000 b41f194e Oct 05 04:56:14 2065 C:\Windows\System32\EthernetMediaManager.dll
+            7ffd6c3b0000 1e711274 Mar 09 05:32:52 1986 C:\Windows\System32\dot3api.dll
+            7ffd75040000 3ac4908a Mar 30 15:56:26 2001 C:\Windows\System32\MobileNetworking.dll
+            7ffd75060000 72d23717 Jan 17 02:21:27 2031 C:\WINDOWS\System32\wlanapi.dll
+            7ffd681d0000 cb52404e Feb 04 02:54:22 2078 C:\Windows\System32\threadpoolwinrt.dll
+            7ffd68400000 249261dd Jun 11 14:58:05 1989 C:\Windows\System32\Windows.Devices.Sensors.dll
+            7ffd683a0000 493c8fe5 Dec 08 04:09:25 2008 C:\Windows\System32\BiWinrt.dll
+            7ffd557a0000 e36b5fd1 Nov 27 12:21:53 2090 C:\Windows\System32\bthprops.cpl
+            7ffd54e80000 3ebaa49f May 08 20:40:31 2003 C:\Windows\System32\InputSwitch.dll
+            7ffd61be0000 9aeba465 May 12 15:45:09 2052 C:\Windows\System32\Windows.Energy.dll
+            7ffd6a650000 63463472 Oct 12 05:28:50 2022 C:\Windows\System32\NetworkIcon.dll
+            7ffd735f0000 b1d8ef71 Jul 20 14:58:25 2064 C:\WINDOWS\SYSTEM32\bluetoothapis.dll
+            7ffd5da40000 292cfa67 Nov 22 13:39:03 1991 C:\Windows\System32\wpnclient.dll
+            7ffd7e830000 84fcf073 Sep 13 19:12:19 2040 C:\WINDOWS\System32\imagehlp.dll
+            7ffd7b790000 3469042c Nov 12 02:19:40 1997 C:\WINDOWS\SYSTEM32\gpapi.dll
+            7ffd5cc80000 59404be8 Jun 13 22:32:40 2017 C:\Windows\System32\RTMediaFrame.dll
+            7ffd5a3c0000 49e7c6e0 Apr 17 02:01:36 2009 C:\Windows\System32\WinLangdb.dll
+            7ffd69df0000 34f38b5e Feb 25 04:09:18 1998 C:\WINDOWS\system32\directmanipulation.dll
+            7ffd74f80000 baba993d Apr 10 05:45:01 2069 C:\Windows\System32\wuceffects.dll
+            7ffd5d7e0000 037b3556 Nov 08 00:57:10 1971 C:\WINDOWS\System32\wscinterop.dll
+            7ffd4d570000 98fe3dc4 May 04 09:39:48 2051 C:\WINDOWS\System32\WSCAPI.dll
+            7ffd722f0000 14b87342 Jan 06 13:34:10 1981 C:\WINDOWS\System32\wscui.cpl
+            7ffd3f120000 0faed322 May 04 09:39:14 1978 C:\WINDOWS\WinSxS\amd64_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.22621.3810_none_57f8d842ce19d879\gdiplus.dll
+            7ffd5d710000 7f757058 Oct 06 02:48:24 2037 C:\WINDOWS\System32\werconcpl.dll
+            7ffd79a50000 9d7309cd Sep 15 17:14:21 2053 C:\WINDOWS\System32\DiagnosticDataSettings.dll
+            7ffd79a60000 ec38e67a Aug 02 21:33:14 2095 C:\WINDOWS\System32\wer.dll
+            7ffd65620000 ed3b7ee9 Feb 15 00:08:25 2096 C:\WINDOWS\System32\framedynos.dll
+            7ffd722d0000 f9ac9f27 Sep 28 00:35:19 2102 C:\WINDOWS\System32\hcproviders.dll
+            7ffd74f20000 ea0e5c2f Jun 08 06:27:27 2094 C:\WINDOWS\SYSTEM32\wevtapi.dll
+            7ffd5d640000 c9cd408b Apr 15 02:23:39 2077 C:\Windows\System32\IEProxy.dll
+            7ffd5a910000 664b2d3c May 20 13:00:12 2024 C:\WINDOWS\SystemApps\MicrosoftWindows.Client.Core_cw5n1h2txyewy\StartMenu.dll
+            7ffd7b070000 52821b05 Nov 12 13:11:49 2013 C:\WINDOWS\SYSTEM32\Secur32.dll
+            7ffd54d80000 bc9f21de Apr 12 18:25:02 2070 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\CoreMessagingXP.dll
+            7ffd3c520000 fa9be0f8 Mar 28 12:07:52 2103 C:\WINDOWS\SYSTEM32\DUI70.dll
+            7ffd6a590000 6f82e2a9 Apr 14 10:11:21 2029 C:\WINDOWS\SYSTEM32\DUser.dll
+            7ffd3b510000 6086da19 Apr 26 17:19:53 2021 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.UI.Xaml.dll
+            7ffd70ee0000 90a1b58a Nov 22 17:27:54 2046 C:\WINDOWS\SYSTEM32\VERSION.dll
+            7ffd43240000 ca8585ca Sep 01 20:56:10 2077 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.Internal.FrameworkUdk.dll
+            7ffd55550000 76bf44d3 Feb 17 10:48:03 2033 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.UI.Windowing.Core.dll
+            7ffd4d890000 c0f7c62a Aug 03 17:26:34 2072 C:\WINDOWS\SYSTEM32\Microsoft.Internal.FrameworkUdk.System.dll
+            7ffd3af10000 4600c19a Mar 21 06:24:42 2007 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.UI.Xaml.Controls.dll
+            7ffd571c0000 036a1343 Oct 26 02:03:15 1971 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.Internal.FrameworkUdk.CBS.dll
+            7ffd556a0000 c2777fa6 May 21 18:56:06 2073 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.Windows.ApplicationModel.Resources.dll
+            7ffd55310000 fcc5833e May 21 10:43:42 2104 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\MRM.dll
+            7ffd3ac20000 c9f93840 May 18 10:48:00 2077 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\dcompi.dll
+            7ffd3ff10000 6595ca40 Jan 03 21:57:36 2024 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\marshal.dll
+            7ffd749b0000 923c8adc Sep 30 09:27:24 2047 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.UI.Composition.OSSupport.dll
+            7ffd3a910000 e4760723 Jun 17 19:38:43 2091 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\dwmcorei.dll
+            7ffd54d00000 37d58807 Sep 07 23:47:51 1999 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.InputStateManager.dll
+            7ffd77be0000 ae2edaf5 Aug 09 01:44:53 2062 C:\WINDOWS\SYSTEM32\D3DCOMPILER_47.dll
+            7ffd3a7b0000 b0e6654a Jan 18 14:40:26 2064 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.UI.Input.dll
+            7ffd3a4c0000 66423b71 May 13 18:10:25 2024 C:\WINDOWS\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\MicrosoftGraphRecentItemsManager.dll
+            7ffd431c0000 c3fa6896 Mar 11 05:24:54 2074 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.UI.Windowing.dll
+            7ffd3a190000 6643e601 May 15 00:30:25 2024 C:\WINDOWS\SystemApps\MicrosoftWindows.Client.FileExp_cw5n1h2txyewy\FileExplorerExtensions.dll
+            7ffd5de80000 fd04b687 Jul 08 09:15:19 2104 C:\Windows\System32\Windows.Management.Workplace.dll
+            7ffd5b090000 42e8cc2c Jul 28 14:14:36 2005 C:\Windows\System32\Windows.Internal.System.UserProfile.dll
+            7ffd73970000 dda5e874 Nov 02 19:54:44 2087 C:\Windows\System32\Windows.Graphics.dll
+            7ffd68120000 6e4c4fc4 Aug 21 20:21:56 2028 C:\WINDOWS\SYSTEM32\PhotoMetadataHandler.dll
+            7ffd68090000 80dc2e94 Jul 05 05:31:32 2038 C:\Windows\System32\dlnashext.dll
+            7ffd55190000 310927f8 Jan 26 20:14:00 1996 C:\WINDOWS\SYSTEM32\searchfolder.dll
+            7ffd3e290000 06bce152 Aug 01 10:29:06 1973 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.DirectManipulation.dll
+            7ffd39e40000 656a4535 Dec 01 21:42:29 2023 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\WinUIEdit.dll
+            7ffd5cb70000 00fd1784 Jul 12 01:23:48 1970 C:\WINDOWS\SYSTEM32\elscore.dll
+            7ffd72ec0000 ccbdd14f Nov 06 21:25:51 2078 C:\WINDOWS\SYSTEM32\USP10.dll
+            7ffd6c020000 5a9dd194 Mar 06 00:24:04 2018 C:\WINDOWS\SYSTEM32\globinputhost.dll
+            7ffd3e210000 aa2029d7 Jun 12 04:56:23 2060 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\wuceffectsi.dll
+            7ffd5fea0000 6250a907 Apr 08 23:28:39 2022 C:\WINDOWS\SYSTEM32\rometadata.dll
+            7ffd55450000 663bf956 May 09 00:14:46 2024 C:\WINDOWS\SystemApps\MicrosoftWindows.Client.Core_cw5n1h2txyewy\SnapLayout.dll
+            7ffd553a0000 664289cc May 13 23:44:44 2024 C:\WINDOWS\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\DesktopSpotlight.dll
+            7ffd42320000 656a42d5 Dec 01 21:32:21 2023 C:\WINDOWS\SystemApps\Microsoft.WindowsAppRuntime.CBS_8wekyb3d8bbwe\Microsoft.UI.Xaml.Internal.dll
+            7ffd73770000 603ac11c Feb 27 23:01:00 2021 C:\Windows\System32\Cabinet.dll
+            7ffd36910000 0b418f86 Dec 26 18:12:38 1975 C:\Windows\System32\ieframe.dll
+            7ffd5ea20000 96375187 Nov 11 02:42:31 2049 C:\WINDOWS\SYSTEM32\msIso.dll
+            7ffd617a0000 a3047bd5 Aug 31 22:40:53 2056 C:\Windows\System32\WorkFoldersShell.dll
+            7ffd61cd0000 d3c92ffd Aug 05 19:46:37 2082 C:\WINDOWS\system32\WINMM.dll
+            7ffd50750000 79e7b225 Oct 23 16:45:57 2034 C:\WINDOWS\SYSTEM32\virtdisk.dll
+            7ffd64bd0000 64632cea May 16 09:12:42 2023 C:\WINDOWS\SYSTEM32\activationmanager.dll
+            7ffd63860000 6df87d34 Jun 19 06:25:24 2028 C:\WINDOWS\SYSTEM32\capauthz.dll
+            7ffd43080000 ce3ce87a Aug 24 12:22:50 2079 C:\WINDOWS\SYSTEM32\pcacli.dll
+            7ffd73010000 0779f4b2 Dec 22 19:30:10 1973 C:\WINDOWS\System32\sfc_os.dll
+            7ffd7bed0000 3c0c4b88 Dec 04 05:05:28 2001 C:\WINDOWS\SYSTEM32\ServicingCommon.dll
+            7ffd721c0000 402df31f Feb 14 11:06:23 2004 C:\WINDOWS\SYSTEM32\storageusage.dll
+            7ffd66d40000 22241612 Feb 25 13:24:50 1988 C:\WINDOWS\system32\themeui.dll
+            7ffd71cb0000 7baf1c5b Oct 04 03:20:27 2035 C:\Windows\System32\Windows.Internal.Graphics.Display.DisplayEnhancementManagement.dll
+            7ffd66ac0000 1295be24 Nov 18 21:03:48 1979 C:\Windows\System32\DesktopSwitcherDataModel.dll
+            7ffd5a5a0000 ca8696ec Sep 02 16:21:32 2077 C:\WINDOWS\SYSTEM32\msftedit.dll
+            7ffd74d70000 d39f516c Jul 05 01:34:04 2082 C:\WINDOWS\System32\UIAnimation.dll
+            7ffd72740000 570b69e0 Apr 11 11:09:52 2016 C:\WINDOWS\system32\IconCodecService.dll
+            7ffd71ea0000 39ee495f Oct 19 03:07:43 2000 C:\Windows\System32\PlayToDevice.dll
+            7ffd723d0000 ce3a0c9c Aug 22 08:20:12 2079 C:\Windows\System32\Windows.Internal.Graphics.Display.DisplayColorManagement.dll
+            7ffd77260000 81a043f1 Nov 30 22:06:57 2038 C:\Windows\System32\taskschd.dll
+            7ffd65160000 857a4205 Dec 17 19:33:41 2040 C:\WINDOWS\system32\wpdshext.dll
+            7ffd66ed0000 449b471e Jun 23 03:42:54 2006 C:\Windows\System32\EhStorAPI.dll
+    SubSystemData:     00007ffd7464b6e0
+    ProcessHeap:       0000000000ff0000
+    ProcessParameters: 0000000000ff68e0
+    CurrentDirectory:  'C:\WINDOWS\system32\'
+    WindowTitle:  'Microsoft.Windows.Explorer'
+    ImageFile:    'C:\Windows\explorer.exe'
+    CommandLine:  'C:\Windows\explorer.exe'
+    DllPath:      '< Name not readable >'
+    Environment:  0000000003c859c0
+        =::=::\
+        ALLUSERSPROFILE=C:\ProgramData
+        APPDATA=C:\Users\Administrator\AppData\Roaming
+        CommonProgramFiles=C:\Program Files\Common Files
+        CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files
+        CommonProgramW6432=C:\Program Files\Common Files
+        COMPUTERNAME=DESKTOP-00GSGI2
+        ComSpec=C:\WINDOWS\system32\cmd.exe
+        DBGENG_OVERRIDE_DBGSRV_PATH=C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps\Microsoft.WinDbg_8wekyb3d8bbwe\dbgsrvX64.exe
+        DBGHELP_HOMEDIR=C:\ProgramData\Dbg
+        DriverData=C:\Windows\System32\Drivers\DriverData
+        EFC_608=1
+        FPS_BROWSER_APP_PROFILE_STRING=Internet Explorer
+        FPS_BROWSER_USER_PROFILE_STRING=Default
+        HOMEDRIVE=C:
+        HOMEPATH=\Users\Administrator
+        LOCALAPPDATA=C:\Users\Administrator\AppData\Local
+        LOGONSERVER=\\DESKTOP-00GSGI2
+        NUMBER_OF_PROCESSORS=10
+        OneDrive=C:\Users\Administrator\OneDrive
+        OS=Windows_NT
+        Path=C:\Program Files\WindowsApps\Microsoft.WinDbg_1.2402.24001.0_x64__8wekyb3d8bbwe\amd64;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\Git\cmd;C:\Program Files\GitHub CLI\;C:\Program Files\dotnet\;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;C:\Users\Administrator\.dotnet\tools
+        PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+        PROCESSOR_ARCHITECTURE=AMD64
+        PROCESSOR_IDENTIFIER=Intel64 Family 15 Model 6 Stepping 1, GenuineIntel
+        PROCESSOR_LEVEL=15
+        PROCESSOR_REVISION=0601
+        ProgramData=C:\ProgramData
+        ProgramFiles=C:\Program Files
+        ProgramFiles(x86)=C:\Program Files (x86)
+        ProgramW6432=C:\Program Files
+        PSModulePath=C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+        PUBLIC=C:\Users\Public
+        SRCSRV_SHOW_TF_PROMPT=1
+        SystemDrive=C:
+        SystemRoot=C:\WINDOWS
+        TEMP=C:\Users\ADMINI~1\AppData\Local\Temp
+        TMP=C:\Users\ADMINI~1\AppData\Local\Temp
+        USERDOMAIN=DESKTOP-00GSGI2
+        USERDOMAIN_ROAMINGPROFILE=DESKTOP-00GSGI2
+        USERNAME=Administrator
+        USERPROFILE=C:\Users\Administrator
+        windir=C:\WINDOWS
+        ALLUSERSPROFILE=C:\ProgramData
+        APPDATA=C:\Users\Administrator\AppData\Roaming
+        CommonProgramFiles=C:\Program Files\Common Files
+        CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files
+        CommonProgramW6432=C:\Program Files\Common Files
+        COMPUTERNAME=DESKTOP-00GSGI2
+        ComSpec=C:\WINDOWS\system32\cmd.exe
+        DBGENG_OVERRIDE_DBGSRV_PATH=C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps\Microsoft.WinDbg_8wekyb3d8bbwe\dbgsrvX64.exe
+        DBGHELP_HOMEDIR=C:\ProgramData\Dbg
+        DriverData=C:\Windows\System32\Drivers\DriverData
+        EFC_608=1
+        FPS_BROWSER_APP_PROFILE_STRING=Internet Explorer
+        FPS_BROWSER_USER_PROFILE_STRING=Default
+        HOMEDRIVE=C:
+        HOMEPATH=\Users\Administrator
+        LOCALAPPDATA=C:\Users\Administrator\AppData\Local
+        LOGONSERVER=\\DESKTOP-00GSGI2
+        NUMBER_OF_PROCESSORS=10
+        OneDrive=C:\Users\Administrator\OneDrive
+        OS=Windows_NT
+        Path=C:\Program Files\WindowsApps\Microsoft.WinDbg_1.2402.24001.0_x64__8wekyb3d8bbwe\amd64;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\Git\cmd;C:\Program Files\GitHub CLI\;C:\Program Files\dotnet\;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;C:\Users\Administrator\.dotnet\tools
+        PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+        PROCESSOR_ARCHITECTURE=AMD64
+        PROCESSOR_IDENTIFIER=Intel64 Family 15 Model 6 Stepping 1, GenuineIntel
+        PROCESSOR_LEVEL=15
+        PROCESSOR_REVISION=0601
+        ProgramData=C:\ProgramData
+        ProgramFiles=C:\Program Files
+        ProgramFiles(x86)=C:\Program Files (x86)
+        ProgramW6432=C:\Program Files
+        PSModulePath=C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+        PUBLIC=C:\Users\Public
+        SRCSRV_SHOW_TF_PROMPT=1
+        SystemDrive=C:
+        SystemRoot=C:\WINDOWS
+        TEMP=C:\Users\ADMINI~1\AppData\Local\Temp
+        TMP=C:\Users\ADMINI~1\AppData\Local\Temp
+        USERDOMAIN=DESKTOP-00GSGI2
+        USERDOMAIN_ROAMINGPROFILE=DESKTOP-00GSGI2
+        USERNAME=Administrator
+        USERPROFILE=C:\Users\Administrator
+        windir=C:\WINDOWS
