@@ -4,10 +4,73 @@ In this presentation, we're going to look at process creation in a little bit mo
 
 We're going to discuss the functions of the Application Program Interface (API) which we can use to create a process. Here are some of the functions used to create a process in the Windows operating system:
 
-- `CreateProcess` — This is the most frequently used API.
-- `CreateProcessAsUser` — We probably won't be discussing this in this presentation.
-- `ZwCreateUserProcess` — An undocumented function, but that is how you create a user mode process from the console. There are a couple of other undocumented APIs to create a process.
+- `CreateProcess` (Kernel32.dll) — This is the most frequently used API.
+- `CreateProcessAsUser` (Advapi32.dll) — We probably won't be discussing this in this presentation.
+- `ZwCreateUserProcess` (ntdll.dll)  — An undocumented function, but that is how you create a user mode process from the console. There are a couple of other undocumented APIs to create a process.
 - ... and more
+
+## Prototype definitions
+
+### Kernel32.dll:CreateProcess
+
+[Source ms](https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessa)
+
+```c
+BOOL CreateProcessA(
+  [in, optional]      LPCSTR                lpApplicationName,
+  [in, out, optional] LPSTR                 lpCommandLine,
+  [in, optional]      LPSECURITY_ATTRIBUTES lpProcessAttributes,
+  [in, optional]      LPSECURITY_ATTRIBUTES lpThreadAttributes,
+  [in]                BOOL                  bInheritHandles,
+  [in]                DWORD                 dwCreationFlags,
+  [in, optional]      LPVOID                lpEnvironment,
+  [in, optional]      LPCSTR                lpCurrentDirectory,
+  [in]                LPSTARTUPINFOA        lpStartupInfo,
+  [out]               LPPROCESS_INFORMATION lpProcessInformation
+);
+```
+
+### Advapi32.dll:CreateProcessAsUser
+
+
+[Source ms](https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessasusera)
+
+```c
+BOOL CreateProcessAsUserA(
+  [in, optional]      HANDLE                hToken,
+  [in, optional]      LPCSTR                lpApplicationName,
+  [in, out, optional] LPSTR                 lpCommandLine,
+  [in, optional]      LPSECURITY_ATTRIBUTES lpProcessAttributes,
+  [in, optional]      LPSECURITY_ATTRIBUTES lpThreadAttributes,
+  [in]                BOOL                  bInheritHandles,
+  [in]                DWORD                 dwCreationFlags,
+  [in, optional]      LPVOID                lpEnvironment,
+  [in, optional]      LPCSTR                lpCurrentDirectory,
+  [in]                LPSTARTUPINFOA        lpStartupInfo,
+  [out]               LPPROCESS_INFORMATION lpProcessInformation
+);
+```
+
+### ntdll.dll:ZwCreateUserProcess
+
+[source reactos](https://processhacker.sourceforge.io/doc/ntzwapi_8h.html)
+
+```c
+NTSYSCALLAPI NTSTATUS NTAPI ZwCreateUserProcess	(	_Out_ PHANDLE 	ProcessHandle,
+_Out_ PHANDLE 	ThreadHandle,
+_In_ ACCESS_MASK 	ProcessDesiredAccess,
+_In_ ACCESS_MASK 	ThreadDesiredAccess,
+_In_opt_ POBJECT_ATTRIBUTES 	ProcessObjectAttributes,
+_In_opt_ POBJECT_ATTRIBUTES 	ThreadObjectAttributes,
+_In_ ULONG 	ProcessFlags,
+_In_ ULONG 	ThreadFlags,
+_In_opt_ PVOID 	ProcessParameters,
+_Inout_ PPS_CREATE_INFO 	CreateInfo,
+_In_opt_ PPS_ATTRIBUTE_LIST 	AttributeList 
+)	
+```
+
+
 
 ## Parameters
 
