@@ -4,7 +4,11 @@ In this presentation, we will delve into the implementation of Windows API by ex
 
 ## What is an API?
 
-An **API** (Application Programming Interface) functions like any other function: it manipulates data structures, controls read/write operations to devices, and may implement algorithms or logic. For Windows, these are libraries provided by Microsoft.
+An **API** (Application Programming Interface) functions like any other function: 
+
+It manipulates data structures, controls read/write operations to devices, and may implement algorithms or logic. 
+
+For Windows, these are libraries provided by Microsoft.
 
 ## Example: `GetCommandLine`
 
@@ -17,8 +21,11 @@ Let’s explore the `GetCommandLine` API. According to MSDN documentation, this 
 #### Demonstration
 
 1. **Setup:** We will use a simple application that calls `GetCommandLine` and prints the result.
+
 2. **Execution:** In a debugging environment, we will start the application with a specific command line.
+
 3. **Output:** The API returns the entire command line used to start the process, including the path and any arguments.
+
 
 ### Debugging
 
