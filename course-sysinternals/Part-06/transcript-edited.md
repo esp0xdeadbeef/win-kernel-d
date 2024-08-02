@@ -7,19 +7,30 @@ In this overview, we'll explore various debugger commands and the intricacies of
 
 ## Debugger Commands Overview
 - `!process`
+  - `!process 0 0`
+  - `!process 0 7`
+  - `!process 0 17`
+  - `!process 0 17 notepad.exe`
+  - `!process <pointer> 17`
+  - `.process /r /p <pointer>` -> move into the context of that process
 - `!thread`
 - `!address`
 
+
 ### Key Commands:
 - `!process 0x0`: Displays all processes in the system with minimal information.
-- `!process 0x1d`: Provides maximum information, leveraging an undocumented switch, `17`.
+- `!process 0x1d`: Provides maximum information, leveraging an undocumented switch `17`.
 
 ### Usage in Context:
 - `.process`: Switches the context to user mode of a specified process.
 - `!dump`: Dumps out the process structure in a user-friendly way from the kernel.
 
 ## Practical Demonstration
-In the demonstration, we're connected to a Windows 8.1 machine. Commands like `!process 0 0` will be used to display the processes running on the system.
+
+In the demonstration, we're connected to a `Windows 8.1` machine. Commands like `!process 0 0` will be used to display the processes running on the system.
+
+WE are going to make a small C++ program and debug on the function `printf` or `GetCommandLine();` (i don't know yet)
+
 
 ### Detailed Exploration:
 - Increasing verbosity with `!process 0x7` provides the kernel-mode stack of the thread.
@@ -35,5 +46,3 @@ We've explored essential debugger commands that are invaluable for process analy
 Please direct all reviews, comments, and suggestions to our designated platform. For personal inquiries or detailed discussions, feel free to follow the provided links for direct classroom training or online resources.
 
 Thank you for your attention. We look forward to your feedback and see you in the next session!
-
-- Generated with [Kome.ai](https://kome.ai)
