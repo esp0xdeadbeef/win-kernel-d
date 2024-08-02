@@ -1,3 +1,14 @@
+
+`_EPROCESS` contains the `_PEB` and the `_KPROCESS`.
+
+The general description of what they are doing:
+- **`_EPROCESS`:** Contains bookkeeping data structures.
+- **`_KPROCESS`:** A smaller structure compared to `_EPROCESS`, containing machine-dependent fields like `CR3`.
+- **`_PEB`:** The user-mode data structure containing information like the heap, loaded DLLs, etc.
+
+Creating, accessing, modifying, or deleting a process involves manipulating these data structures.
+
+
 # What is CR3 in the context of Windows?
 
 In the context of Windows, CR3 is a control register in the CPU that holds the physical address of the Page Directory Base Register (PDBR). This address points to the base of the page directory used in translating virtual addresses to physical addresses. The CR3 register is essential for the memory management unit (MMU) to correctly map and access memory pages. It plays a key role in context switching, as each process has its own page directory, and switching the CR3 value changes the active page directory, thereby switching the memory context.
