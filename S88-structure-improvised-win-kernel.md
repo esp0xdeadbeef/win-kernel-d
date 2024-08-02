@@ -1,9 +1,14 @@
+Here is the revised text with the additional column for the "Procedural" and "Equipment" models:
 
 ## ISA-88 Structure of the Windows Operating System 
 
-This is copied from chatGPT and i'm quite confident that there are wrong things in here.. 
+Core research question
+https://stackoverflow.com/questions/5790587/what-is-the-difference-between-eprocess-object-and-kprocess-object
 
-I might revisit this sceme if my knowledge grows.
+Also a nice read:
+
+https://www.ired.team/miscellaneous-reversing-forensics/windows-kernel-internals/interrupt-descriptor-table-idt
+
 
 ### KPROCESS 
 **Description** : Represents procedural elements and equipment components in the Windows kernel. 
