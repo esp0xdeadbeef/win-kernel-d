@@ -4,23 +4,35 @@
 2. Understanding OS structures
 3. Getting better with WinDbg and debugging in general
 
-# Research Questions:
+# Research Questions: 
 
-1. What is the relationship between the Windows operating system and the ISA-88 standard, and how is it implemented in industrial settings?
-2. What are the best practices for effectively using kernel debugging tools on Windows, and what are the critical areas to focus on during debugging?
-3. What are the common vulnerabilities in the Windows kernel, and what interfaces are most often targeted by attackers?
-4. How does the Windows operating system handle process synchronization and inter-process communication, and what are the security implications?
-5. What are the primary differences between Windows kernel and user-mode debugging, and how can these differences impact the debugging process?
-6. How can kernel-mode debugging tools be used to identify and mitigate potential security threats within the Windows operating system?
-7. What are the most effective methods for exploiting vulnerabilities in the Windows kernel, and how can these exploits be detected and prevented?
-8. How do Windows kernel updates and patches address known vulnerabilities, and what are the challenges associated with these updates?
-9. What role do hardware abstraction layers play in the security and stability of the Windows operating system, and how can they be leveraged in kernel debugging?
-10. How can developers and security professionals collaborate to improve the security of the Windows kernel, and what tools and techniques are most effective in this effort?
+1. How does heap management work in Windows, and how does the kernel's heap management differ from user-mode program heap managers?
 
+2. What is the relationship between the Windows operating system and the ISA-88 standard, and how is ISA-88 implemented in industrial settings?
+
+3. What are the best practices for effectively using kernel debugging tools on Windows, and what critical areas should be focused on during debugging?
+
+4. What are the common vulnerabilities in the Windows kernel, and which interfaces are most frequently targeted by attackers?
+
+5. How does the Windows operating system handle process synchronization and inter-process communication, and what are the associated security implications?
+
+6. What are the primary differences between Windows kernel-mode and user-mode debugging, and how can these differences impact the debugging process?
+
+7. How can kernel-mode debugging tools be used to identify and mitigate potential security threats within the Windows operating system?
+
+8. What are the most effective methods for exploiting vulnerabilities in the Windows kernel, and how can these exploits be detected and prevented?
+
+9. How do Windows kernel updates and patches address known vulnerabilities, and what challenges are associated with these updates?
+
+10. What role do hardware abstraction layers play in the security and stability of the Windows operating system, and how can they be leveraged in kernel debugging?
+
+11. How can developers and security professionals collaborate to improve the security of the Windows kernel, and what tools and techniques are most effective in this effort?
 
 # Research Questions answered:
 
-1. What is the relationship between the Windows operating system and the ISA-88 standard, and how is it implemented in industrial settings?
+1. How does heap management work in Windows, and how does the kernel's heap management differ from user-mode program heap managers?
+
+2. What is the relationship between the Windows operating system and the ISA-88 standard, and how is ISA-88 implemented in industrial settings?
 
 The ISA-88 standard, primarily designed for batch control, is not directly applicable to continuous processes such as those managed by the Windows operating system in industrial settings. I was aware of this limitation before starting this research. However, there are similarities, which I have explained in detail in [S88 structure](S88-structure-improvised-win-kernel.md).
 
@@ -34,34 +46,23 @@ To make a comprehensive comparison, it is essential to consider the ISA-88 (Batc
 
 Combining these standards provides a more complete framework for comparison and implementation in industrial environments.
 
-1. What are the best practices for effectively using kernel debugging tools on Windows, and what are the critical areas to focus on during debugging?
+3. What are the best practices for effectively using kernel debugging tools on Windows, and what critical areas should be focused on during debugging?
 
+4. What are the common vulnerabilities in the Windows kernel, and which interfaces are most frequently targeted by attackers?
 
-3. What are the common vulnerabilities in the Windows kernel, and what interfaces are most often targeted by attackers?
+5. How does the Windows operating system handle process synchronization and inter-process communication, and what are the associated security implications?
 
+6. What are the primary differences between Windows kernel-mode and user-mode debugging, and how can these differences impact the debugging process?
 
-4. How does the Windows operating system handle process synchronization and inter-process communication, and what are the security implications?
+7. How can kernel-mode debugging tools be used to identify and mitigate potential security threats within the Windows operating system?
 
+8. What are the most effective methods for exploiting vulnerabilities in the Windows kernel, and how can these exploits be detected and prevented?
 
-5. What are the primary differences between Windows kernel and user-mode debugging, and how can these differences impact the debugging process?
+9. How do Windows kernel updates and patches address known vulnerabilities, and what challenges are associated with these updates?
 
+10. What role do hardware abstraction layers play in the security and stability of the Windows operating system, and how can they be leveraged in kernel debugging?
 
-6. How can kernel-mode debugging tools be used to identify and mitigate potential security threats within the Windows operating system?
-
-
-7. What are the most effective methods for exploiting vulnerabilities in the Windows kernel, and how can these exploits be detected and prevented?
-
-
-
-8. How do Windows kernel updates and patches address known vulnerabilities, and what are the challenges associated with these updates?
-
-
-9.  What role do hardware abstraction layers play in the security and stability of the Windows operating system, and how can they be leveraged in kernel debugging?
-
-
-10. How can developers and security professionals collaborate to improve the security of the Windows kernel, and what tools and techniques are most effective in this effort?
-
-
+11. How can developers and security professionals collaborate to improve the security of the Windows kernel, and what tools and techniques are most effective in this effort?
 
 
 # Getting my feet wet
