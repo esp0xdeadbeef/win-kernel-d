@@ -114,7 +114,10 @@ The default and dynamic heaps are basically the same thing, but the default heap
 
 ### Managing the Default Heap
 
-Both default and dynamic heaps have a specific amount of reserved and committed memory regions associated with them, but they behave differently with respect to these limits. The default heap's reserved and committed memory region sizes are designated when the application is linked. Each application carries this information about itself within its executable image information. You can view this information by dumping header information for the executable image. For example, type the following command at a Windows NT command prompt (PWALK.EXE is used here to complete the example; you will need to substitute your own path and executable file):
+Both default and dynamic heaps have a specific amount of reserved and committed memory regions associated with them, but they behave differently with respect to these limits. The default heap's reserved and committed memory region sizes are designated when the application is linked. Each application carries this information about itself within its executable image information. You can view this information by dumping header information for the executable image. 
+
+
+For example, type the following command at a Windows NT command prompt (`PWALK.EXE` is used here to complete the example; you will need to substitute your own path and executable file):
 
 ```plaintext
 link32 -dump -headers d:\samples\walker\pwalk.exe
@@ -142,7 +145,7 @@ OPTIONAL HEADER VALUES
        0 checksum                  
    10000 size of stack reserve     
     1000 size of stack commit      
-   10000 size of heap reserve      
+   10000 size of heap reserve
     1000 size of heap commit       
    ...
 ```
