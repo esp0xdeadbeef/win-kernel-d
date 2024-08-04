@@ -16,3 +16,6 @@
 [submodule "external-resources/awesome-windbg-extensions-links"]
 	path = external-resources/awesome-windbg-extensions-links
 	url = https://github.com/anhkgg/awesome-windbg-extensions
+[submodule "external-resources/ropchain-generator"]
+	path = external-resources/ropchain-generator
+	url = https://github.com/esp0xdeadbeef/ropchain-generator
