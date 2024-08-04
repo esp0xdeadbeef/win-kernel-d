@@ -141,3 +141,12 @@ To do:
   * https://stackoverflow.com/questions/55054190/copying-data-from-user-app-to-kernel-driver-via-memcpy
 
 * [ ] reading this and implementing a python script as google did https://cloud.google.com/blog/topics/threat-intelligence/monitoring-windows-console-activity-part-2
+
+* [ ] in general for OSEE (tip from offsec `ApexPredator`):
+  * [ ] Read Connor McGarrs blog. 
+  * [ ] Check out @s4dbrd blog on x64 shellcode. 
+  * [ ] Look in to:
+    * [ ]  heap overflows
+    * [ ]  ACG 
+    * [ ]  CFG
+    * [ ]  CET bypasses
