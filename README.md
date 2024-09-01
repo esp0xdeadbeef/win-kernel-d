@@ -129,8 +129,7 @@ To do:
 
     * [ ] Token impersonation
     * [ ] Understanding and making debuggable concepts:
-      * [ ] SMEP & SMAP
-    * [ ]  
+      * [ ] SMEP & SMAP 
     </details>
 
 * [ ] Making my first driver:
@@ -150,3 +149,7 @@ To do:
     * [ ]  ACG 
     * [ ]  CFG
     * [ ]  CET bypasses
+
+* [ ] Implementing the C code from blogpost:
+  * https://www.codeproject.com/Articles/800404/Understanding-LIST-ENTRY-Lists-and-Its-Importance
+
