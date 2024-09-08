@@ -153,3 +153,4 @@ To do:
 * [ ] Implementing the C code from blogpost:
   * https://www.codeproject.com/Articles/800404/Understanding-LIST-ENTRY-Lists-and-Its-Importance
 
+good explanation of eprocess peb teb  https://youtube.com/watch?v=fpoqxuvVL1c
