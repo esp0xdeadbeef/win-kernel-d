@@ -1,5 +1,5 @@
 ## Day 0 Checklist
 
-- [ ] VM snapshot
+- [x] VM snapshot
 - [ ] IDA setup
 ...
